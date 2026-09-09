@@ -349,17 +349,6 @@
             <p>Preencha o formulário abaixo e receba uma proposta personalizada</p>
         </div>
         
-    <!-- OPÇÃO WHATSAPP -->
-    <div style="background:#f0faf0;border:2px solid #25D366;border-radius:12px;padding:20px 24px;margin:0 30px 10px;text-align:center;">
-        <p style="margin:0 0 12px;font-size:1em;color:#333;">💬 <strong>Prefere responder pelo WhatsApp?</strong><br>
-        <span style="font-size:0.9em;color:#555;">Um atendente virtual vai te fazer as perguntas direto no chat!</span></p>
-        <a href="https://wa.me/5527319019800?text=or%C3%A7amento" target="_blank"
-           style="display:inline-block;background:#25D366;color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1em;">
-            📲 Quero fazer pelo WhatsApp
-        </a>
-    </div>
-    <div style="text-align:center;padding:8px 0 4px;color:#999;font-size:0.85em;">— ou preencha o formulário abaixo —</div>
-
         <div class="form-container">
             <div class="success-message" id="successMessage">
                 ✅ Formulário enviado com sucesso! Entraremos em contato em breve.
@@ -521,7 +510,7 @@
                 </div>
                 <div class="footer-contact">
                     <h4>Fale Conosco</h4>
-                    <a href="https://wa.me/5527920000167" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <p>Atendimento por e-mail: contato@sucesso.com.br</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -579,13 +568,21 @@
             const formData = new FormData(form);
             const jsonData = {};
             formData.forEach((value, key) => { jsonData[key] = value; });
-            // Adiciona nomes dos arquivos (se houver)
+            // A API usa nomes semânticos diferentes dos campos visuais.
+            jsonData.nome_completo = jsonData.nome;
+            jsonData.objetivo_principal = jsonData.objetivo;
+            jsonData.publico_alvo = jsonData.publico;
+            jsonData.faixa_investimento = jsonData.orcamento;
+            delete jsonData.nome;
+            delete jsonData.objetivo;
+            delete jsonData.publico;
+            delete jsonData.orcamento;
             if (selectedFiles.length > 0) {
                 jsonData.arquivos = selectedFiles.map(f => f.name).join(', ');
             }
-            
+
             try {
-                const response = await fetch('https://api.sucesso.net.br/form-sites', {
+                const response = await fetch('https://api.sucesso.com.br/api/form-sites', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(jsonData)
