@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agência do Sucesso | Orçamento para Desenvolvimento de Sites</title>
+    <meta name="description" content="Solicite um orçamento personalizado para criação do seu site profissional">
+    <link rel="icon" type="image/x-icon" href="favicon-2026.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sucesso.net.br/formsites/">
+    <meta property="og:title" content="Orçamento para Desenvolvimento de Sites | Agência do Sucesso">
+    <meta property="og:description" content="Solicite um orçamento personalizado para criação do seu site profissional">
+    <meta property="og:image" content="https://sucesso.net.br/formsites/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sucesso.net.br/formsites/">
+    <meta property="twitter:title" content="Orçamento para Desenvolvimento de Sites | Agência do Sucesso">
+    <meta property="twitter:description" content="Solicite um orçamento personalizado para criação do seu site profissional">
+    <meta property="twitter:image" content="https://sucesso.net.br/formsites/og-image.jpg">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0066CC 0%, #004999 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0066CC 0%, #004999 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header-logo {
+            max-width: 150px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        
+        .title-logo {
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            padding: 40px 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+        
+        .form-group label .required {
+            color: #e53e3e;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="url"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0066CC;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .file-upload {
+            border: 2px dashed #e2e8f0;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .file-upload:hover {
+            border-color: #0066CC;
+            background: #f7fafc;
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .file-upload-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .file-list {
+            margin-top: 15px;
+        }
+        
+        .file-item {
+            background: #f7fafc;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .file-item button {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #0066CC 0%, #004999 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(33, 150, 243, 0.3);
+        }
+        
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .success-message,
+        .error-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .success-message {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+        
+        .error-message {
+            background: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #fc8181;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #0056A3 0%, #003B73 100%);
+            color: white;
+            padding: 60px 30px 30px;
+            margin-top: 40px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo-section {
+            text-align: center;
+        }
+        
+        .footer-logo {
+            max-width: 200px;
+        }
+        
+        .footer-menu {
+            text-align: left;
+        }
+        
+        .footer-menu h4 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .footer-menu ul {
+            list-style: none;
+        }
+        
+        .footer-menu li {
+            margin: 5px 0;
+        }
+        
+        .footer-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-menu a:hover {
+            color: #64B5F6;
+        }
+        
+        .footer-contact {
+            text-align: right;
+        }
+        
+        .footer-contact h4 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: transform 0.3s;
+            font-size: 1em;
+        }
+        
+        .whatsapp i {
+            margin-right: 8px;
+        }
+        
+        .whatsapp:hover {
+            transform: scale(1.05);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 30px;
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.9em;
+            margin: 5px 0;
+            opacity: 0.8;
+        }
+        
+        .footer-credits {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .footer-credits a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-menu,
+            .footer-contact {
+                text-align: center;
+            }
+            
+            .footer-logo {
+                max-width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo-sucesso-white.png?v=5" alt="Agência do Sucesso" class="header-logo">
+            <h1>📝 Orçamento para Desenvolvimento de Sites</h1>
+            <p>Preencha o formulário abaixo e receba uma proposta personalizada</p>
+        </div>
+        
+    <!-- OPÇÃO WHATSAPP -->
+    <div style="background:#f0faf0;border:2px solid #25D366;border-radius:12px;padding:20px 24px;margin:0 30px 10px;text-align:center;">
+        <p style="margin:0 0 12px;font-size:1em;color:#333;">💬 <strong>Prefere responder pelo WhatsApp?</strong><br>
+        <span style="font-size:0.9em;color:#555;">Um atendente virtual vai te fazer as perguntas direto no chat!</span></p>
+        <a href="https://wa.me/5527319019800?text=or%C3%A7amento" target="_blank"
+           style="display:inline-block;background:#25D366;color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1em;">
+            📲 Quero fazer pelo WhatsApp
+        </a>
+    </div>
+    <div style="text-align:center;padding:8px 0 4px;color:#999;font-size:0.85em;">— ou preencha o formulário abaixo —</div>
+
+        <div class="form-container">
+            <div class="success-message" id="successMessage">
+                ✅ Formulário enviado com sucesso! Entraremos em contato em breve.
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                ❌ Erro ao enviar formulário. Por favor, tente novamente.
+            </div>
+            
+            <form id="siteForm" enctype="multipart/form-data">
+                <!-- Dados de Contato -->
+                <h2 style="margin-bottom: 20px; color: #0066CC;">📞 Dados de Contato</h2>
+                
+                <div class="form-group">
+                    <label>Nome Completo <span class="required">*</span></label>
+                    <input type="text" name="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>WhatsApp <span class="required">*</span></label>
+                    <input type="tel" name="whatsapp" placeholder="(00) 00000-0000" required>
+                </div>
+                
+                <!-- Objetivo do Site -->
+                <h2 style="margin: 30px 0 20px; color: #0066CC;">🎯 Sobre o Site</h2>
+                
+                <div class="form-group">
+                    <label>1. Objetivo Principal <span class="required">*</span></label>
+                    <select name="objetivo" required>
+                        <option value="">Selecione...</option>
+                        <option value="cartao-visitas">Cartão de visitas digital</option>
+                        <option value="vender-produto">Vender produto/serviço</option>
+                        <option value="agendamentos">Gerar agendamentos</option>
+                        <option value="portfolio">Portfólio profissional</option>
+                        <option value="blog">Blog/Conteúdo</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>2. Público-Alvo <span class="required">*</span></label>
+                    <textarea name="publico" placeholder="Descreva quem é seu cliente ideal..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>6. Nome/Domínio Pretendido <span class="required">*</span></label>
+                    <input type="text" name="dominio" placeholder="Ex: www.seusite.com.br, .adv.br, .med.br, etc" required>
+                </div>
+                
+                <!-- Identidade Visual -->
+                <h2 style="margin: 30px 0 20px; color: #0066CC;">🎨 Identidade Visual</h2>
+                
+                <div class="form-group">
+                    <label>3.1 Possui logotipo e cores definidas?</label>
+                    <select name="possui_logo">
+                        <option value="sim-completo">Sim, tenho logo e paleta de cores</option>
+                        <option value="sim-logo">Sim, só tenho logo</option>
+                        <option value="nao">Não, preciso criar</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>3.2 Apresentação (resumo sobre você/empresa)</label>
+                    <textarea name="apresentacao" placeholder="Me dê um resumo de 2-3 parágrafos sobre suas habilidades, especialidades e diferenciais..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>3.3 Sites de Referência</label>
+                    <textarea name="referencias" placeholder="Cole aqui 2 ou 3 URLs de sites que você gosta e que servem de inspiração..."></textarea>
+                </div>
+                
+                <!-- Funcionalidades -->
+                <h2 style="margin: 30px 0 20px; color: #0066CC;">⚙️ Funcionalidades</h2>
+                
+                <div class="form-group">
+                    <label>4. Recursos Específicos</label>
+                    <textarea name="funcionalidades" placeholder="Ex: Blog, Formulário de contato, Galeria de fotos, Depoimentos, Chat WhatsApp, etc..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Redes Sociais</label>
+                    <textarea name="redes_sociais" placeholder="Quer integrar Instagram, Facebook, LinkedIn? Cole os links aqui..."></textarea>
+                </div>
+                
+                <!-- Infraestrutura -->
+                <h2 style="margin: 30px 0 20px; color: #0066CC;">🌐 Infraestrutura</h2>
+                
+                <div class="form-group">
+                    <label>5. Já possui domínio e hospedagem?</label>
+                    <select name="infraestrutura">
+                        <option value="nao">Não, preciso de tudo</option>
+                        <option value="dominio">Só tenho domínio</option>
+                        <option value="completo">Sim, tenho domínio e hospedagem</option>
+                    </select>
+                </div>
+                
+                <!-- Prazo e Orçamento -->
+                <h2 style="margin: 30px 0 20px; color: #0066CC;">💰 Prazo e Investimento</h2>
+                
+                <div class="form-group">
+                    <label>Prazo Desejado</label>
+                    <select name="prazo">
+                        <option value="">Sem pressa</option>
+                        <option value="urgente">Urgente (até 1 semana)</option>
+                        <option value="rapido">Rápido (2-3 semanas)</option>
+                        <option value="normal">Normal (1 mês)</option>
+                        <option value="flex">Flexível (mais de 1 mês)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Faixa de Investimento</label>
+                    <select name="orcamento">
+                        <option value="">Prefiro não informar</option>
+                        <option value="ate-500">Até R$ 500</option>
+                        <option value="500-1000">R$ 500 - R$ 1.000</option>
+                        <option value="1000-2000">R$ 1.000 - R$ 2.000</option>
+                        <option value="2000-5000">R$ 2.000 - R$ 5.000</option>
+                        <option value="acima-5000">Acima de R$ 5.000</option>
+                    </select>
+                </div>
+                
+                <!-- Upload de Arquivos -->
+                <h2 style="margin: 30px 0 20px; color: #0066CC;">📎 Arquivos</h2>
+                
+                <div class="form-group">
+                    <label>Enviar Logo, Fotos, Referências (opcional)</label>
+                    <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                        <div class="file-upload-icon">📁</div>
+                        <p>Clique aqui ou arraste arquivos</p>
+                        <p style="font-size: 0.85em; color: #718096; margin-top: 5px;">Formatos: JPG, PNG, PDF (máx 10MB cada)</p>
+                        <input type="file" id="fileInput" multiple accept="image/*,.pdf">
+                    </div>
+                    <div class="file-list" id="fileList"></div>
+                </div>
+                
+                <button type="submit" class="btn-submit">Enviar Solicitação</button>
+            </form>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-menu">
+                    <h4>Nossos Serviços</h4>
+                    <ul>
+                        <li><a href="https://sucesso.net.br">Agência de Marketing</a></li>
+                        <li><a href="https://sucesso.net.br/google">Google Workspace</a></li>
+                        <li><a href="https://sucesso.net.br/microsoft">Microsoft 365</a></li>
+                        <li><a href="https://sucesso.net.br/canva">Canva Pro</a></li>
+                    </ul>
+                </div>
+                <div class="footer-logo-section">
+                    <img src="logo-sucesso-white.png?v=5" alt="Sucesso Empresarial" class="footer-logo">
+                </div>
+                <div class="footer-contact">
+                    <h4>Fale Conosco</h4>
+                    <a href="https://wa.me/5527920000167" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Agência do Sucesso - Sucesso Empresarial<br>Todos os direitos reservados.</p>
+                <p class="footer-credits">Site desenvolvido pela <a href="https://sucesso.net.br" target="_blank">Agência do Sucesso Empresarial</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const form = document.getElementById('siteForm');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        let selectedFiles = [];
+        
+        // File upload handling
+        fileInput.addEventListener('change', (e) => {
+            selectedFiles = Array.from(e.target.files);
+            updateFileList();
+        });
+        
+        function updateFileList() {
+            if (selectedFiles.length === 0) {
+                fileList.innerHTML = '';
+                return;
+            }
+            
+            fileList.innerHTML = selectedFiles.map((file, index) => `
+                <div class="file-item">
+                    <span>📄 ${file.name} (${(file.size / 1024).toFixed(1)} KB)</span>
+                    <button type="button" onclick="removeFile(${index})">Remover</button>
+                </div>
+            `).join('');
+        }
+        
+        function removeFile(index) {
+            selectedFiles.splice(index, 1);
+            updateFileList();
+        }
+        
+        // Form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('.btn-submit');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Coleta campos como JSON
+            const formData = new FormData(form);
+            const jsonData = {};
+            formData.forEach((value, key) => { jsonData[key] = value; });
+            // Adiciona nomes dos arquivos (se houver)
+            if (selectedFiles.length > 0) {
+                jsonData.arquivos = selectedFiles.map(f => f.name).join(', ');
+            }
+            
+            try {
+                const response = await fetch('https://api.sucesso.net.br/form-sites', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(jsonData)
+                });
+                
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    form.reset();
+                    selectedFiles = [];
+                    updateFileList();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error('Erro ao enviar');
+                }
+            } catch (error) {
+                errorMessage.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Solicitação';
+            }
+        });
+    </script>
+</body>
+</html>

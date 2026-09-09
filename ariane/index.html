@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ariane Visage — Consultoria de Imagem</title>
+  <meta name="description" content="Consultoria de imagem profissional. Análise facial, corporal, coloração e íris. 25 anos de experiência transformando pessoas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400;1,6..96,500&family=Josefin+Sans:wght@300;400&family=Lora:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sucesso.net.br/ariane/">
+  <meta property="og:title" content="Ariane Visage — Consultoria de Imagem">
+  <meta property="og:description" content="Consultoria de imagem profissional. 25 anos de experiência transformando pessoas.">
+  <meta property="og:image" content="https://sucesso.net.br/ariane/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --noir:    #0e0b09;
+      --noir-2:  #141109;
+      --noir-3:  #1b1612;
+      --or:      #c9a84c;
+      --or-pale: #d4b896;
+      --ivoire:  #f0ebe3;
+      --brun:    #6b5c4e;
+      --texte:   #b8ad9e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      background: var(--noir);
+      color: var(--texte);
+      line-height: 1.7;
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    /* grain overlay */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* cursor */
+    .cursor { position: fixed; width: 8px; height: 8px; background: var(--or); border-radius: 50%; pointer-events: none; z-index: 10000; transform: translate(-50%,-50%); transition: transform .15s; }
+    .cursor-ring { position: fixed; width: 34px; height: 34px; border: 1px solid rgba(201,168,76,.35); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: border-color .3s; }
+    .cursor.hover { transform: translate(-50%,-50%) scale(2.2); }
+    .cursor-ring.hover { border-color: rgba(201,168,76,.7); transform: translate(-50%,-50%) scale(1.4); }
+
+    /* animations */
+    @keyframes rise   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes line   { from { width:0; } to { width:100%; } }
+
+    .a { animation: rise .9s cubic-bezier(.16,1,.3,1) both; }
+    .d1{animation-delay:.05s} .d2{animation-delay:.25s} .d3{animation-delay:.45s}
+    .d4{animation-delay:.65s} .d5{animation-delay:.85s} .d6{animation-delay:1.05s}
+
+    .reveal { opacity:0; transform:translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.in { opacity:1; transform:translateY(0); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 200;
+      padding: 28px 64px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background .4s, padding .4s, border-color .4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(14,11,9,.96);
+      backdrop-filter: blur(20px);
+      padding: 18px 64px;
+      border-bottom-color: rgba(201,168,76,.1);
+    }
+    .nav-logo img { height: 30px; }
+    .nav-links { display: flex; gap: 44px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--or-pale); font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 400; transition: color .3s; }
+    .nav-links a:hover { color: var(--or); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 130px 40px 100px;
+      background: var(--noir);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,168,76,.055) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow { font-size: .62rem; letter-spacing: .45em; text-transform: uppercase; color: var(--or); margin-bottom: 36px; font-weight: 400; }
+    .hero-name {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(5rem, 14vw, 10.5rem);
+      font-weight: 700;
+      color: var(--ivoire);
+      line-height: .88;
+      letter-spacing: -.015em;
+    }
+    .hero-visage {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(1.4rem, 4vw, 2.8rem);
+      font-weight: 400; font-style: italic;
+      color: var(--or);
+      letter-spacing: .18em;
+      margin-top: 4px; margin-bottom: 52px;
+    }
+    .hero-divider {
+      width: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--or), transparent);
+      margin: 0 auto 52px;
+      animation: line 1.3s ease .9s forwards;
+      max-width: 180px;
+    }
+    .hero-quote {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      color: var(--or-pale);
+      max-width: 460px;
+      margin: 0 auto 52px;
+      line-height: 1.65;
+    }
+    .hero-cta {
+      display: inline-block;
+      padding: 16px 52px;
+      border: 1px solid var(--or);
+      color: var(--or);
+      text-decoration: none;
+      font-size: .68rem; letter-spacing: .28em;
+      text-transform: uppercase; font-weight: 400;
+      transition: all .4s;
+      position: relative; overflow: hidden;
+    }
+    .hero-cta::before { content: ''; position: absolute; inset: 0; background: var(--or); transform: translateX(-101%); transition: transform .4s ease; }
+    .hero-cta span { position: relative; z-index: 1; }
+    .hero-cta:hover::before { transform: translateX(0); }
+    .hero-cta:hover { color: var(--noir); }
+
+    .hero-scroll { position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 14px; animation: fadeIn .8s ease 1.6s both; }
+    .hero-scroll span { font-size: .58rem; letter-spacing: .35em; text-transform: uppercase; color: var(--brun); }
+    .hero-scroll-bar { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--or), transparent); }
+
+    /* ── MANIFESTO ── */
+    #manifesto { padding: 130px 60px; background: var(--noir-2); text-align: center; position: relative; overflow: hidden; }
+    #manifesto::before {
+      content: '"';
+      position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+      font-family: 'Bodoni Moda', serif; font-size: 22rem; font-weight: 700;
+      color: rgba(201,168,76,.03); line-height: 1; pointer-events: none;
+    }
+    .manifesto-quote {
+      font-family: 'Lora', serif; font-style: italic;
+      font-size: clamp(1.25rem, 3vw, 1.9rem);
+      color: var(--ivoire); max-width: 760px; margin: 0 auto 28px;
+      line-height: 1.75;
+    }
+    .manifesto-attr { font-size: .62rem; letter-spacing: .32em; text-transform: uppercase; color: var(--or); }
+
+    /* ── SERVIÇOS ── */
+    #servicos { padding: 130px 64px; background: var(--noir); }
+    .s-header { margin-bottom: 80px; }
+    .s-label { font-size: .62rem; letter-spacing: .38em; text-transform: uppercase; color: var(--or); margin-bottom: 16px; }
+    .s-title {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 700; color: var(--ivoire); line-height: .95;
+    }
+    .s-title em { font-style: italic; font-weight: 400; color: var(--or); }
+
+    .servicos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(201,168,76,.09); }
+    .s-card { background: var(--noir); padding: 64px 52px; position: relative; overflow: hidden; transition: background .4s; }
+    .s-card:hover { background: var(--noir-2); }
+    .s-num {
+      font-family: 'Bodoni Moda', serif; font-size: 5.5rem; font-weight: 700;
+      color: rgba(201,168,76,.06); position: absolute; top: 18px; right: 36px;
+      line-height: 1; transition: color .4s;
+    }
+    .s-card:hover .s-num { color: rgba(201,168,76,.12); }
+    .s-card-label { font-size: .58rem; letter-spacing: .32em; text-transform: uppercase; color: var(--or); margin-bottom: 16px; }
+    .s-line { width: 36px; height: 1px; background: var(--or); margin-bottom: 20px; transition: width .5s ease; }
+    .s-card:hover .s-line { width: 72px; }
+    .s-card-title { font-family: 'Bodoni Moda', serif; font-size: 2rem; font-weight: 700; color: var(--ivoire); margin-bottom: 20px; line-height: 1.05; }
+    .s-card-desc { font-size: .82rem; color: var(--texte); line-height: 1.85; max-width: 360px; }
+
+    /* ── SOBRE ── */
+    #sobre { padding: 130px 64px; background: var(--noir-3); }
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .sobre-p { font-size: .87rem; color: var(--texte); margin-bottom: 22px; line-height: 1.9; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+    .stat { border-top: 1px solid rgba(201,168,76,.18); padding-top: 22px; }
+    .stat-n { font-family: 'Bodoni Moda', serif; font-size: 3.4rem; font-weight: 700; color: var(--or); line-height: 1; margin-bottom: 8px; }
+    .stat-l { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--brun); }
+
+    /* ── CTA ── */
+    #cta { padding: 130px 64px; text-align: center; background: var(--noir-2); position: relative; overflow: hidden; }
+    #cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(201,168,76,.055), transparent); }
+    .cta-sub { font-size: .87rem; color: var(--texte); max-width: 500px; margin: 0 auto 56px; line-height: 1.9; }
+    .cta-btn {
+      display: inline-block; padding: 20px 64px;
+      background: var(--or); color: var(--noir);
+      text-decoration: none; font-size: .68rem; letter-spacing: .28em;
+      text-transform: uppercase; font-weight: 400;
+      transition: all .4s;
+    }
+    .cta-btn:hover { background: var(--ivoire); letter-spacing: .38em; }
+
+    /* ── CONTATO ── */
+    #contato { padding: 100px 64px; background: var(--noir); }
+    .contato-items { display: flex; gap: 64px; justify-content: center; flex-wrap: wrap; margin-top: 64px; }
+    .c-item { display: flex; flex-direction: column; align-items: center; gap: 14px; text-decoration: none; transition: all .3s; }
+    .c-item svg { width: 26px; height: 26px; color: var(--or); transition: transform .3s; }
+    .c-item:hover svg { transform: scale(1.2); }
+    .c-label { font-size: .58rem; letter-spacing: .28em; text-transform: uppercase; color: var(--brun); }
+    .c-val { font-family: 'Lora', serif; font-style: italic; font-size: 1rem; color: var(--ivoire); transition: color .3s; }
+    .c-item:hover .c-val { color: var(--or); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--noir-2);
+      border-top: 1px solid rgba(201,168,76,.08);
+      text-align: center; padding: 40px 64px;
+    }
+    footer img { height: 26px; opacity: .5; margin-bottom: 16px; display: block; margin-inline: auto; }
+    footer p { font-size: .62rem; letter-spacing: .15em; color: var(--brun); text-transform: uppercase; }
+    footer a { color: var(--or); text-decoration: none; }
+
+    /* ── FLOAT WPP ── */
+    .wpp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 998;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: #111; border: 1px solid rgba(37,211,102,.5);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.6);
+      transition: all .3s; text-decoration: none;
+    }
+    .wpp-float:hover { background: #25D366; border-color: #25D366; transform: scale(1.08); }
+    .wpp-float svg { width: 24px; height: 24px; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav, nav.scrolled { padding: 18px 24px; }
+      .nav-links { display: none; }
+      #hero { padding: 110px 24px 90px; }
+      #manifesto, #servicos, #sobre, #cta, #contato { padding: 80px 24px; }
+      .servicos-grid { grid-template-columns: 1fr; }
+      .sobre-grid { grid-template-columns: 1fr; gap: 56px; }
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo"><img src="logo-white.webp" alt="Ariane Visage"></div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow a d1">Consultoria de Imagem · Campo Grande · MS</p>
+  <h1 class="hero-name a d2">ARIANE</h1>
+  <p class="hero-visage a d3">Visage</p>
+  <div class="hero-divider"></div>
+  <p class="hero-quote a d4">A sua imagem conta uma história.<br>Vamos reescrever ela juntas?</p>
+  <a href="https://wa.me/5567981133322?text=Olá%20Ariane!%20Gostaria%20de%20saber%20mais%20sobre%20a%20consultoria%20de%20imagem."
+     class="hero-cta a d5" target="_blank"><span>Agendar Consultoria</span></a>
+  <div class="hero-scroll">
+    <div class="hero-scroll-bar"></div>
+    <span>Explorar</span>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <p class="manifesto-quote reveal">"Imagem não é superfície. É linguagem.<br>É a primeira conversa que você tem com o mundo —<br>antes mesmo de abrir a boca."</p>
+  <p class="manifesto-attr reveal">— Ariane Visage · 25 anos de transformações</p>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="s-header reveal">
+    <p class="s-label">O que ofereço</p>
+    <h2 class="s-title">Análises que<br><em>transformam</em></h2>
+  </div>
+  <div class="servicos-grid">
+    <div class="s-card reveal">
+      <span class="s-num">I</span>
+      <p class="s-card-label">Análise</p>
+      <div class="s-line"></div>
+      <h3 class="s-card-title">Facial</h3>
+      <p class="s-card-desc">Estudo do formato do rosto para indicar os melhores cortes de cabelo, armações de óculos e técnicas de make que valorizam seus traços únicos.</p>
+    </div>
+    <div class="s-card reveal">
+      <span class="s-num">II</span>
+      <p class="s-card-label">Análise</p>
+      <div class="s-line"></div>
+      <h3 class="s-card-title">Corporal</h3>
+      <p class="s-card-desc">Styling personalizado com base nas proporções do corpo. Aprenda a escolher roupas que equilibram sua silhueta e expressam sua personalidade.</p>
+    </div>
+    <div class="s-card reveal">
+      <span class="s-num">III</span>
+      <p class="s-card-label">Análise</p>
+      <div class="s-line"></div>
+      <h3 class="s-card-title">Coloração</h3>
+      <p class="s-card-desc">Identificação da estação e paleta de cores que mais harmonizam com sua pele, olhos e cabelo — para você sempre parecer radiante.</p>
+    </div>
+    <div class="s-card reveal">
+      <span class="s-num">IV</span>
+      <p class="s-card-label">Análise</p>
+      <div class="s-line"></div>
+      <h3 class="s-card-title">Íris</h3>
+      <p class="s-card-desc">Leitura do tecido, cor e estrutura da íris para compreender sua essência e orientar escolhas de estilo profundamente alinhadas à sua natureza.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-grid">
+    <div class="reveal">
+      <p class="s-label">Quem sou eu</p>
+      <h2 class="s-title" style="font-size:clamp(2rem,4vw,3.2rem);margin-bottom:36px;">
+        Duas décadas<br><em>moldando identidades</em>
+      </h2>
+      <p class="sobre-p">Sou Ariane, consultora visagista com 25 anos de atuação no mercado da beleza. Não trabalho apenas com estética — trabalho com identidade, autoconhecimento e a mensagem que você transmite ao mundo.</p>
+      <p class="sobre-p">Meu método une ciência — análise de íris, teoria das cores, estudo das proporções faciais — com sensibilidade humana para criar uma imagem autêntica, coerente com quem você realmente é.</p>
+      <p class="sobre-p">Cada transformação que realizo é única. Porque cada pessoa é única.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="stat-n">25+</div><div class="stat-l">Anos de experiência</div></div>
+      <div class="stat"><div class="stat-n">4</div><div class="stat-l">Tipos de análise</div></div>
+      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Personalizado</div></div>
+      <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Transformações</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <p class="s-label reveal">Pronta para a mudança?</p>
+  <h2 class="s-title reveal" style="margin-bottom:28px;">
+    Sua imagem é o seu<br><em>cartão de visitas</em>
+  </h2>
+  <p class="cta-sub reveal">Agende sua consultoria e descubra como uma imagem alinhada pode transformar não apenas como o mundo te vê, mas como você se vê.</p>
+  <a href="https://wa.me/5567981133322?text=Olá%20Ariane!%20Quero%20agendar%20minha%20consultoria%20de%20imagem."
+     class="cta-btn reveal" target="_blank">Falar com a Ariane</a>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div style="text-align:center">
+    <p class="s-label reveal">Vamos conversar</p>
+    <h2 class="s-title reveal" style="font-size:clamp(2rem,4vw,3rem);">Entre em <em>contato</em></h2>
+  </div>
+  <div class="contato-items">
+    <a href="https://wa.me/5567981133322" class="c-item reveal" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.513 5.83L.057 23.486a.5.5 0 00.6.628l5.848-1.53A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.732.978.995-3.63-.235-.374A9.869 9.869 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
+      <span class="c-label">WhatsApp</span>
+      <span class="c-val">(67) 98113-3322</span>
+    </a>
+    <a href="https://instagram.com/arianevisage" class="c-item reveal" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      <span class="c-label">Instagram</span>
+      <span class="c-val">@arianevisage</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logo-white.webp" alt="Ariane Visage">
+  <p>© 2026 Ariane Visage · Consultoria de Imagem</p>
+  <p style="margin-top:8px;">Site desenvolvido pela <a href="https://sucesso.net.br" target="_blank">Agência do Sucesso Empresarial</a></p>
+</footer>
+
+<!-- FLOAT WPP -->
+<a class="wpp-float" target="_blank" href="https://wa.me/5567981133322?text=Olá%20Ariane!%20Vim%20pelo%20site.">
+  <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.513 5.83L.057 23.486a.5.5 0 00.6.628l5.848-1.53A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.732.978.995-3.63-.235-.374A9.869 9.869 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
+</a>
+
+<script>
+  // Cursor
+  const cur = document.getElementById('cur');
+  const ring = document.getElementById('ring');
+  let rx = 0, ry = 0, mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+  });
+  (function tick() {
+    rx += (mx - rx) * .13; ry += (my - ry) * .13;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(tick);
+  })();
+  document.querySelectorAll('a,button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cur.classList.add('hover'); ring.classList.add('hover'); });
+    el.addEventListener('mouseleave', () => { cur.classList.remove('hover'); ring.classList.remove('hover'); });
+  });
+
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', scrollY > 60);
+  });
+
+  // Reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renovar Assinatura - Google Workspace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ── WIZARD (Steps 1 & 2) ── */
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: background 0.4s;
+        }
+        #wizard-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 560px;
+            width: 100%;
+            padding: 50px;
+        }
+        #wizard-card h1 { color: #333; font-size: 2em; margin-bottom: 12px; text-align: center; }
+        #wizard-card h1 i { color: #34A853; }
+        .subtitle { color: #666; font-size: 1em; margin-bottom: 35px; text-align: center; }
+        .step { display: none; }
+        .step.active { display: block; }
+        .form-group { margin-bottom: 22px; }
+        label { display: block; color: #333; font-weight: 600; margin-bottom: 8px; }
+        input[type="email"], input[type="text"] {
+            width: 100%; padding: 14px; border: 2px solid #e0e0e0;
+            border-radius: 10px; font-size: 16px; transition: border 0.3s;
+        }
+        input:focus { outline: none; border-color: #4285F4; }
+        .token-input { font-size: 28px !important; text-align: center; letter-spacing: 8px; font-weight: bold; }
+        .btn {
+            width: 100%; padding: 15px; border: none; border-radius: 10px;
+            font-size: 1.05em; font-weight: 600; cursor: pointer;
+            transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .btn-primary { background: linear-gradient(135deg, #4285F4 0%, #34A853 100%); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(66,133,244,0.35); }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+        .btn-secondary { background: #f5f5f5; color: #666; margin-top: 10px; }
+        .btn-secondary:hover { background: #e8e8e8; }
+        .message { padding: 14px; border-radius: 10px; margin-bottom: 18px; display: none; }
+        .message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .message.info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .loader { width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .logo-wizard { text-align: center; margin-bottom: 20px; }
+        .logo-wizard img { max-width: 150px; }
+        #wizard-caption { color: rgba(255,255,255,0.65); font-size: 0.85em; text-align: center; margin-top: 18px; }
+        #wizard-caption a { color: rgba(255,255,255,0.85); text-decoration: none; }
+
+        /* ── TOGGLE (shared) ── */
+        .toggle-switch {
+            position: relative; width: 60px; height: 30px;
+            background: #ccc; border-radius: 15px; cursor: pointer; transition: background 0.3s;
+        }
+        .toggle-switch.active { background: #4285F4; }
+        .toggle-switch::after {
+            content: ''; position: absolute; top: 3px; left: 3px;
+            width: 24px; height: 24px; background: white; border-radius: 50%; transition: transform 0.3s;
+        }
+        .toggle-switch.active::after { transform: translateX(30px); }
+
+        /* ── STEP 3: Full Page Google Layout ── */
+        #step3-page { display: none; width: 100%; }
+        body.show-plans {
+            background: #f5f5f5;
+            justify-content: flex-start;
+            align-items: stretch;
+            padding: 0;
+        }
+        body.show-plans #wizard-card { display: none; }
+        body.show-plans #wizard-caption { display: none; }
+
+        .renew-hero {
+            position: relative; width: 100%; height: 260px; overflow: hidden; line-height: 0;
+        }
+        .renew-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .renew-hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(30,90,200,0.88) 0%, rgba(52,168,83,0.65) 45%, rgba(0,0,0,0.05) 100%);
+        }
+        .renew-hero-text {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 20px; color: white;
+        }
+        .renew-hero-text h1 { font-size: 2.2em; text-shadow: 0 2px 8px rgba(0,0,0,0.2); margin-bottom: 10px; }
+        .renew-hero-text .email-badge {
+            background: rgba(255,255,255,0.2); padding: 5px 18px;
+            border-radius: 30px; font-size: 1em; color: white;
+        }
+
+        .plans-section { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px; }
+
+        .billing-toggle-bar {
+            display: flex; justify-content: center; align-items: center;
+            gap: 15px; padding: 35px 0 10px; flex-wrap: wrap;
+        }
+        .billing-toggle-bar span { font-size: 1.05em; font-weight: 600; color: #666; }
+        .billing-toggle-bar span.active { color: #4285F4; }
+        .discount-pill {
+            background: linear-gradient(135deg, #34A853, #0F9D58);
+            color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.85em; font-weight: 600;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px; margin: 30px 0;
+        }
+        @media (max-width: 900px) { .plans-grid { grid-template-columns: 1fr; } }
+        @media (min-width: 600px) and (max-width: 900px) { .plans-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        .plan-card-g {
+            background: white; border-radius: 15px; padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex; flex-direction: column;
+            cursor: pointer; border: 2px solid transparent;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.2s;
+            position: relative;
+        }
+        .plan-card-g:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,0.15); }
+        .plan-card-g.selected { border-color: #4285F4; box-shadow: 0 10px 30px rgba(66,133,244,0.3); }
+        .plan-card-g.featured { border: 3px solid #4285F4; }
+        .plan-card-g.featured::before {
+            content: "MAIS POPULAR"; position: absolute; top: -14px; right: 20px;
+            background: #4285F4; color: white; padding: 4px 14px;
+            border-radius: 20px; font-size: 0.75em; font-weight: bold;
+        }
+        .plan-card-g.solo { border-color: #34A853; }
+        .plan-card-g.solo.selected { box-shadow: 0 10px 30px rgba(52,168,83,0.3); }
+        .plan-card-g.disabled-plan { opacity: 0.45; pointer-events: none; }
+
+        .plan-card-g h2 { color: #4285F4; font-size: 1.7em; margin-bottom: 12px; }
+        .plan-card-g.solo h2 { color: #34A853; }
+        .plan-price { font-size: 2.6em; color: #333; font-weight: bold; }
+        .plan-period { font-size: 0.88em; color: #888; margin: 4px 0 14px; }
+        .plan-period .savings { color: #34A853; font-weight: 600; }
+        .annual-only-pill {
+            display: inline-block; background: #E8F5E9; color: #2E7D32;
+            font-size: 0.78em; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px;
+        }
+        .pay-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+        .pay-badge {
+            background: #E8F5E9; color: #2E7D32; border: 1px solid #A5D6A7;
+            padding: 5px 12px; border-radius: 20px; font-size: 0.78em; font-weight: 600;
+        }
+        .plan-card-g ul { list-style: none; flex-grow: 1; margin: 8px 0 22px; }
+        .plan-card-g li { padding: 9px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.93em; }
+        .plan-card-g li:last-child { border-bottom: none; }
+        .plan-card-g li::before { content: "✓ "; color: #34A853; font-weight: bold; }
+
+        .btn-renew {
+            display: block; width: 100%; max-width: 420px; margin: 10px auto 0;
+            background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+            color: white; padding: 17px 50px; border-radius: 50px; border: none;
+            font-size: 1.1em; font-weight: bold; cursor: pointer;
+            box-shadow: 0 6px 20px rgba(66,133,244,0.3); transition: all 0.3s; text-align: center;
+        }
+        .btn-renew:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(66,133,244,0.4); }
+        .btn-renew:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: linear-gradient(135deg, #0056A3 0%, #003B73 100%);
+            color: white; padding: 50px 20px 30px;
+        }
+        .footer-content {
+            display: grid; grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px; margin-bottom: 35px; max-width: 1200px;
+            margin-left: auto; margin-right: auto;
+        }
+        .footer-logo { text-align: center; }
+        .footer-logo img { max-width: 190px; }
+        .footer-menu h4, .footer-contact h4 { margin-bottom: 18px; font-size: 1.2em; }
+        .footer-menu ul { list-style: none; }
+        .footer-menu li { margin: 6px 0; }
+        .footer-menu a { color: white; text-decoration: none; transition: color 0.3s; }
+        .footer-menu a:hover { color: #64B5F6; }
+        .footer-contact { text-align: right; }
+        .whatsapp-btn {
+            background: #25D366; color: white; padding: 11px 24px;
+            border-radius: 30px; text-decoration: none; display: inline-block;
+            font-weight: bold; transition: transform 0.3s;
+        }
+        .whatsapp-btn:hover { transform: scale(1.05); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2); padding-top: 28px;
+            text-align: center; max-width: 1200px; margin: 0 auto;
+        }
+        .footer-bottom p { opacity: 0.8; margin: 4px 0; font-size: 0.9em; }
+        .footer-bottom a { color: white; text-decoration: underline; }
+        @media (max-width: 768px) {
+            #wizard-card { padding: 30px 24px; }
+            .footer-content { grid-template-columns: 1fr; gap: 25px; }
+            .footer-contact { text-align: center; }
+            .renew-hero { height: 200px; }
+            .renew-hero-text h1 { font-size: 1.5em; }
+        }
+    </style>
+    <script defer data-domain="sucesso.net.br" src="https://analise.mais.top/js/script.js"></script>
+</head>
+<body>
+
+    <!-- ═══ WIZARD CARD (Steps 1 & 2) ═══ -->
+    <div id="wizard-card">
+        <div class="logo-wizard">
+            <img src="https://sucesso.net.br/formsites/logo-sucesso-blue.png?v=5" alt="Sucesso Empresarial"
+                 onerror="this.style.display='none'">
+        </div>
+
+        <!-- Step 1: Email -->
+        <div id="step1" class="step active">
+            <h1><i class="fas fa-sync-alt"></i> Renovar Assinatura</h1>
+            <p class="subtitle">Digite seu email profissional para continuar</p>
+            <div id="message1" class="message"></div>
+            <form id="emailForm">
+                <div class="form-group">
+                    <label for="email">Seu Email Profissional:</label>
+                    <input type="email" id="email" placeholder="maria@mais.top" required>
+                    <p style="color:#888; font-size:0.88em; margin-top:7px;">
+                        <i class="fas fa-info-circle"></i> Digite o email que você já possui
+                    </p>
+                </div>
+                <button type="submit" class="btn btn-primary" id="sendTokenBtn">
+                    <i class="fas fa-paper-plane"></i> Enviar Código de Verificação
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='/google/'">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+            </form>
+        </div>
+
+        <!-- Step 2: Token -->
+        <div id="step2" class="step">
+            <h1><i class="fas fa-key"></i> Verificação</h1>
+            <p class="subtitle">Digite o código enviado para <strong id="emailDisplay" style="color:#4285F4;"></strong></p>
+            <div id="message2" class="message"></div>
+            <form id="tokenForm">
+                <div class="form-group">
+                    <label for="token">Código de 6 Dígitos:</label>
+                    <input type="text" id="token" class="token-input" maxlength="6" placeholder="000000" required>
+                    <p style="color:#888; font-size:0.88em; margin-top:7px; text-align:center;">O código expira em 15 minutos</p>
+                </div>
+                <button type="submit" class="btn btn-primary" id="verifyTokenBtn">
+                    <i class="fas fa-check-circle"></i> Verificar Código
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="location.reload()">
+                    <i class="fas fa-arrow-left"></i> Solicitar Novo Código
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <p id="wizard-caption">&copy; 2026 <a href="https://sucesso.net.br">Sucesso Empresarial</a></p>
+
+    <!-- ═══ STEP 3: Página completa estilo Google ═══ -->
+    <div id="step3-page">
+
+        <!-- Hero banner -->
+        <div class="renew-hero">
+            <img src="/google/hero-banner.jpg" alt="Google Workspace">
+            <div class="renew-hero-overlay"></div>
+            <div class="renew-hero-text">
+                <h1><mark style="background:rgba(66,133,244,0.82); color:white; padding:6px 18px; border-radius:8px; display:inline-block;"><i class="fab fa-google"></i> Renovar Google Workspace</mark></h1>
+                <p style="margin-top:14px; font-size:1.15em; font-weight:600; text-shadow:0 1px 4px rgba(0,0,0,0.3);">Renovação para <mark style="background:rgba(255,255,255,0.92); color:#1a56c4; padding:4px 16px; border-radius:30px; font-weight:700; font-size:1.05em;" id="emailRenew">—</mark></p>
+            </div>
+        </div>
+
+        <!-- Banner topo -->
+        <div style="background:#E8F5E9; border-bottom:2px solid #A5D6A7; padding:13px 0; text-align:center;">
+            <span style="color:#2E7D32; font-size:0.95em; font-weight:600;">🔄 Escolha o plano para renovar</span>
+        </div>
+
+        <div class="plans-section">
+            <!-- Toggle -->
+            <div class="billing-toggle-bar">
+                <span id="monthlyLbl">Planos Mensais</span>
+                <div class="toggle-switch active" id="billingToggle"></div>
+                <span id="annualLbl" class="active">Planos Anuais</span>
+                <span class="discount-pill">Economize 25%</span>
+            </div>
+
+            <!-- Grid de planos -->
+            <div class="plans-grid">
+
+                <!-- SOLO -->
+                <div class="plan-card-g solo" data-plan="solo" data-annual-only="true">
+                    <h2>⚡ Solo</h2>
+                    <div class="plan-price annual-show">R$ 89</div>
+                    <div class="plan-period annual-show">por ano <span class="savings">(R$ 7,42/mês)</span></div>
+                    <span class="annual-only-pill">📅 Apenas Anual</span>
+                    <div class="pay-badges annual-show">
+                        <span class="pay-badge">💳 Cartão</span>
+                        <span class="pay-badge">💠 PIX</span>
+                    </div>
+                    <ul>
+                        <li>1 conta de e-mail</li>
+                        <li>Sem domínio incluso</li>
+                        <li>200 GB de armazenamento</li>
+                        <li>Gmail profissional</li>
+                        <li>Google Drive, Meet</li>
+                        <li>Calendar, Docs, Sheets</li>
+                        <li>Suporte por e-mail</li>
+                    </ul>
+                </div>
+
+                <!-- BÁSICO -->
+                <div class="plan-card-g" data-plan="basico">
+                    <h2>📧 Básico</h2>
+                    <div class="plan-price annual-show">R$ 224</div>
+                    <div class="plan-price monthly-show" style="display:none;">R$ 22</div>
+                    <div class="plan-period annual-show">por ano <span class="savings">(R$ 18,67/mês)</span></div>
+                    <div class="plan-period monthly-show" style="display:none;">por mês</div>
+                    <div class="pay-badges annual-show">
+                        <span class="pay-badge">💳 Cartão</span>
+                        <span class="pay-badge">💠 PIX</span>
+                    </div>
+                    <div class="pay-badges monthly-show" style="display:none;">
+                        <span class="pay-badge">💳 Cartão</span>
+                    </div>
+                    <ul>
+                        <li>5 contas de e-mail</li>
+                        <li>1 domínio personalizado</li>
+                        <li>200 GB de armazenamento</li>
+                        <li>Gmail profissional</li>
+                        <li>Google Drive, Meet</li>
+                        <li>Calendar, Docs, Sheets, Slides</li>
+                        <li>Forms e Sites</li>
+                        <li>Gemini (IA integrada)</li>
+                        <li>Suporte via WhatsApp</li>
+                    </ul>
+                </div>
+
+                <!-- PREMIUM -->
+                <div class="plan-card-g featured" data-plan="premium">
+                    <h2>⭐ Premium</h2>
+                    <div class="plan-price annual-show">R$ 294</div>
+                    <div class="plan-price monthly-show" style="display:none;">R$ 32</div>
+                    <div class="plan-period annual-show">por ano <span class="savings">(R$ 24,50/mês)</span></div>
+                    <div class="plan-period monthly-show" style="display:none;">por mês</div>
+                    <div class="pay-badges annual-show">
+                        <span class="pay-badge">💳 Cartão</span>
+                        <span class="pay-badge">💠 PIX</span>
+                    </div>
+                    <div class="pay-badges monthly-show" style="display:none;">
+                        <span class="pay-badge">💳 Cartão</span>
+                    </div>
+                    <ul>
+                        <li>5 contas de e-mail</li>
+                        <li><strong>1 TB de armazenamento</strong></li>
+                        <li>Gmail profissional</li>
+                        <li>Google Drive, Meet</li>
+                        <li>Calendar, Docs, Sheets, Slides</li>
+                        <li>Forms e Sites</li>
+                        <li><strong>Gemini (IA integrada)</strong></li>
+                        <li><strong>NotebookLM (IA Avançada)</strong></li>
+                        <li>Suporte prioritário</li>
+                    </ul>
+                </div>
+
+            </div><!-- /plans-grid -->
+
+            <div style="text-align:center; padding-bottom:20px;">
+                <button class="btn-renew" id="proceedBtn" disabled>
+                    <i class="fas fa-credit-card"></i> Continuar para Pagamento
+                </button>
+                <p id="payMsg" style="margin-top:12px; color:#666; font-size:0.9em;"></p>
+            </div>
+        </div><!-- /plans-section -->
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-menu">
+                    <h4>Nossos Serviços</h4>
+                    <ul>
+                        <li><a href="https://sucesso.net.br">Agência de Marketing</a></li>
+                        <li><a href="/google">Google Workspace</a></li>
+                        <li><a href="/microsoft">Microsoft 365</a></li>
+                        <li><a href="/canva">Canva Pro</a></li>
+                    </ul>
+                </div>
+                <div class="footer-logo">
+                    <img src="https://sucesso.net.br/formsites/logo-sucesso-white.png?v=5" alt="Sucesso Empresarial">
+                </div>
+                <div class="footer-contact">
+                    <h4>Fale Conosco</h4>
+                    <a href="https://wa.me/5527920000167" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Agência do Sucesso - Sucesso Empresarial. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+
+    </div><!-- /step3-page -->
+
+    <script>
+        let userEmail = '', userToken = '', selectedPlan = '', selectedBilling = 'annual';
+
+        // ── Step 1: Enviar Token ───────────────────────────────────────────
+        document.getElementById('emailForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const btn = document.getElementById('sendTokenBtn');
+            const msg = document.getElementById('message1');
+            btn.disabled = true;
+            btn.innerHTML = '<div class="loader"></div> Enviando...';
+            try {
+                const r = await fetch('https://api.sucesso.net.br/api/send-renewal-token', {
+                    method: 'POST', headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email})
+                });
+                const data = await r.json();
+                if (r.ok) {
+                    userEmail = email;
+                    document.getElementById('emailDisplay').textContent = email;
+                    msg.style.display = 'none';
+                    document.getElementById('step1').classList.remove('active');
+                    document.getElementById('step2').classList.add('active');
+                } else {
+                    msg.className = 'message error';
+                    msg.textContent = '❌ ' + (data.message || data.error || 'Erro ao enviar código.');
+                    msg.style.display = 'block';
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Código de Verificação';
+                }
+            } catch {
+                msg.className = 'message error';
+                msg.textContent = '❌ Erro de conexão. Tente novamente.';
+                msg.style.display = 'block';
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Código de Verificação';
+            }
+        });
+
+        // ── Step 2: Verificar Token ───────────────────────────────────────
+        document.getElementById('tokenForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const token = document.getElementById('token').value.trim();
+            const btn = document.getElementById('verifyTokenBtn');
+            const msg = document.getElementById('message2');
+            btn.disabled = true;
+            btn.innerHTML = '<div class="loader"></div> Verificando...';
+            try {
+                const r = await fetch('https://api.sucesso.net.br/api/verify-renewal-token', {
+                    method: 'POST', headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email: userEmail, token})
+                });
+                const data = await r.json();
+                if (r.ok) {
+                    userToken = token;
+                    msg.className = 'message success';
+                    msg.textContent = '✅ Código verificado! Redirecionando...';
+                    msg.style.display = 'block';
+                    setTimeout(() => {
+                        // Ativar step 3 — full page
+                        document.getElementById('emailRenew').textContent = userEmail;
+                        document.body.classList.add('show-plans');
+                        document.getElementById('step3-page').style.display = 'block';
+                        window.scrollTo(0, 0);
+                    }, 1200);
+                } else {
+                    msg.className = 'message error';
+                    msg.textContent = '❌ ' + (data.message || data.error || 'Código inválido.');
+                    msg.style.display = 'block';
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> Verificar Código';
+                }
+            } catch {
+                msg.className = 'message error';
+                msg.textContent = '❌ Erro de conexão. Tente novamente.';
+                msg.style.display = 'block';
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Verificar Código';
+            }
+        });
+
+        // ── Step 3: Toggle Mensal/Anual ───────────────────────────────────
+        document.getElementById('billingToggle').addEventListener('click', () => {
+            const isAnnual = document.getElementById('billingToggle').classList.contains('active');
+            if (isAnnual) {
+                // → Mensal
+                selectedBilling = 'monthly';
+                document.getElementById('billingToggle').classList.remove('active');
+                document.getElementById('monthlyLbl').classList.add('active');
+                document.getElementById('annualLbl').classList.remove('active');
+                document.querySelectorAll('.annual-show').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.monthly-show').forEach(el => el.style.display = 'block');
+                // Solo: desabilitar
+                const solo = document.querySelector('[data-annual-only="true"]');
+                if (solo) { solo.classList.add('disabled-plan'); solo.classList.remove('selected'); if(selectedPlan==='solo'){selectedPlan=''; document.getElementById('proceedBtn').disabled=true;} }
+            } else {
+                // → Anual
+                selectedBilling = 'annual';
+                document.getElementById('billingToggle').classList.add('active');
+                document.getElementById('annualLbl').classList.add('active');
+                document.getElementById('monthlyLbl').classList.remove('active');
+                document.querySelectorAll('.annual-show').forEach(el => el.style.display = 'block');
+                document.querySelectorAll('.monthly-show').forEach(el => el.style.display = 'none');
+                // Solo: reabilitar
+                const solo = document.querySelector('[data-annual-only="true"]');
+                if (solo) solo.classList.remove('disabled-plan');
+            }
+        });
+
+        // ── Step 3: Seleção de plano ──────────────────────────────────────
+        document.querySelectorAll('.plan-card-g').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.plan-card-g').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedPlan = card.dataset.plan;
+                document.getElementById('proceedBtn').disabled = false;
+            });
+        });
+
+        // ── Step 3: Pagamento ─────────────────────────────────────────────
+        document.getElementById('proceedBtn').addEventListener('click', async () => {
+            const btn = document.getElementById('proceedBtn');
+            const msg = document.getElementById('payMsg');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gerando link...';
+            try {
+                const r = await fetch('https://api.sucesso.net.br/api/create-renewal-payment', {
+                    method: 'POST', headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email: userEmail, token: userToken, plan: selectedPlan, billing: selectedBilling})
+                });
+                const data = await r.json();
+                if (r.ok && data.payment_url) {
+                    window.location.href = data.payment_url;
+                } else {
+                    msg.textContent = '❌ ' + (data.error || 'Erro ao gerar link de pagamento.');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-credit-card"></i> Continuar para Pagamento';
+                }
+            } catch {
+                msg.textContent = '❌ Erro de conexão. Tente novamente.';
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-credit-card"></i> Continuar para Pagamento';
+            }
+        });
+    </script>
+</body>
+</html>

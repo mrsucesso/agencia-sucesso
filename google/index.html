@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Workspace - Sucesso Empresarial</title>
+    <meta name="description" content="Tenha o melhor do Google para sua empresa: Gmail profissional, Drive, Meet, Docs e muito mais. A partir de R$ 224/ano.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background: linear-gradient(135deg, #4285F4 0%, #34A853 100%); color: white; padding: 60px 0; text-align: center; }
+        header h1 { font-size: 3em; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        header p { font-size: 1.3em; opacity: 0.95; }
+        
+        /* Toggle Mensal/Anual */
+        .billing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 50px 0 40px 0;
+        }
+        
+        .billing-toggle span {
+            font-size: 18px;
+            font-weight: 600;
+            color: #666;
+            transition: color 0.3s;
+        }
+        
+        .billing-toggle span.active {
+            color: #4285F4;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .toggle-switch.active {
+            background: #34A853;
+        }
+        
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: #fff;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .toggle-switch.active::before {
+            transform: translateX(30px);
+        }
+        
+        .discount-badge-toggle {
+            background: linear-gradient(135deg, #34A853, #0F9D58);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 0 0 60px 0; }
+        .plan { background: white; border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+        .plan:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .plan.featured { border: 3px solid #4285F4; position: relative; }
+        .plan.featured::before { content: "MAIS POPULAR"; position: absolute; top: -15px; right: 20px; background: #4285F4; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8em; font-weight: bold; }
+        .annual-only { display: flex; }
+        .annual-only.hidden { display: none; }
+        .plan h2 { color: #4285F4; font-size: 2em; margin-bottom: 20px; }
+        .price { font-size: 2.5em; color: #333; margin: 20px 0; }
+        .price span { font-size: 0.5em; color: #666; }
+        .price-period { font-size: 0.9em; color: #888; margin-top: -5px; margin-bottom: 15px; }
+        .payment-methods { display: flex; gap: 6px; justify-content: center; align-items: center; margin-bottom: 25px; flex-wrap: wrap; }
+        .payment-badge { background: #f0f0f0; color: #666; padding: 6px 14px; border-radius: 20px; font-size: 0.8em; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .payment-badge.active { background: #E8F5E9; color: #2E7D32; border: 1px solid #A5D6A7; }
+        .pix-icon { color: #32BCAD; font-weight: bold; }
+        .plan ul { list-style: none; margin: 20px 0 30px 0; flex-grow: 1; }
+        .plan li { padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.95em; line-height: 1.5; }
+        .plan li:last-child { border-bottom: none; }
+        .plan li:before { content: "✓ "; color: #34A853; font-weight: bold; margin-right: 10px; }
+        .cta { display: inline-block; background: linear-gradient(135deg, #4285F4 0%, #34A853 100%); color: white; padding: 16px 50px; border-radius: 50px; text-decoration: none; font-size: 1.15em; font-weight: bold; transition: all 0.3s; box-shadow: 0 6px 20px rgba(66, 133, 244, 0.3); margin-top: 10px; }
+        .cta:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(66, 133, 244, 0.4); }
+        .plan.featured .cta { background: linear-gradient(135deg, #4285F4 0%, #34A853 100%) !important; color: white !important; }
+        footer { background: #333; color: white; text-align: center; padding: 30px 0; margin-top: 60px; }
+        .whatsapp { background: #25D366; color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; display: inline-block; margin-top: 20px; font-weight: bold; }
+        @media (max-width: 768px) { header h1 { font-size: 2em; } .plans { grid-template-columns: 1fr; } }
+
+        footer {
+            background: linear-gradient(135deg, #0056A3 0%, #003B73 100%);
+            color: white;
+            padding: 60px 20px 30px;
+            margin-top: 0;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-logo { text-align: center; }
+        .footer-logo img { max-width: 200px; }
+        .footer-menu { text-align: left; }
+        .footer-menu h4 { margin-bottom: 20px; font-size: 1.3em; }
+        .footer-menu ul { list-style: none; }
+        .footer-menu li { margin: 5px 0; }
+        .footer-menu a { color: white; text-decoration: none; transition: color 0.3s; }
+        .footer-menu a:hover { color: #64B5F6; }
+        .footer-contact { text-align: right; }
+        .footer-contact h4 { margin-bottom: 20px; font-size: 1.3em; }
+        .whatsapp { background: #25D366; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; display: inline-block; font-weight: bold; transition: transform 0.3s; font-size: 1em; }
+        .whatsapp i { margin-right: 8px; }
+        .whatsapp:hover { transform: scale(1.05); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px; text-align: center; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-bottom p { opacity: 0.8; margin: 5px 0; }
+        .footer-credits { margin-top: 15px; font-size: 0.9em; opacity: 0.8; }
+        .footer-credits a { color: white; text-decoration: underline; }
+        @media (max-width: 768px) {
+            .footer-content { grid-template-columns: 1fr; gap: 30px; }
+            .footer-menu, .footer-contact { text-align: center; }
+        }
+    </style>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Google Workspace - Sucesso Empresarial">
+    <meta property="og:description" content="E-mail profissional, Drive, Meet e muito mais com Google Workspace para sua empresa.">
+    <meta property="og:image" content="https://sucesso.net.br/google/hero-banner.jpg">
+    <meta property="og:url" content="https://sucesso.net.br/google/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://sucesso.net.br/google/hero-banner.jpg">
+</head>
+<body>
+
+
+
+    <!-- Hero com imagem + gradiente + texto -->
+    <div style="position:relative; width:100%; height:380px; overflow:hidden; line-height:0;">
+        <img src="/google/hero-banner.jpg" alt="Google Workspace" 
+             style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
+        <!-- Gradiente: azul-verde opaco no topo, fade para transparente embaixo -->
+        <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(30,90,200,0.88) 0%, rgba(52,168,83,0.65) 45%, rgba(0,0,0,0.05) 100%);"></div>
+        <!-- Texto centralizado sobre a imagem -->
+        <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px;">
+            <h1 style="color:white; font-size:2.8em; font-weight:700; margin:0 0 12px 0; text-shadow:0 2px 8px rgba(0,0,0,0.3); font-family:'Google Sans','Segoe UI',sans-serif;">
+                <i class="fab fa-google" style="font-size:0.85em;"></i> Google Workspace
+            </h1>
+            <p style="color:rgba(255,255,255,0.92); font-size:1.15em; margin:0; text-shadow:0 1px 4px rgba(0,0,0,0.3); font-family:'Google Sans','Segoe UI',sans-serif;">
+                Produtividade profissional com as ferramentas do Google
+            </p>
+        </div>
+    </div>
+
+    <!-- Banner Renovação — visível sem rolar -->
+    <div style="background: #E8F5E9; border-bottom: 2px solid #A5D6A7; padding: 14px 0; text-align: center;">
+        <div class="container">
+            <span style="color: #2E7D32; font-size: 1em; font-weight: 600;">🔄 Já é cliente? </span>
+            <a href="https://sucesso.net.br/google-renovacao.html" style="background: #34A853; color: white; padding: 8px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 0.95em; margin-left: 10px;">Renovar Assinatura</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Toggle Mensal/Anual -->
+        <div class="billing-toggle">
+            <span id="monthly-label">Planos Mensais</span>
+            <div class="toggle-switch active" id="billing-toggle"></div>
+            <span id="annual-label" class="active">Planos Anuais</span>
+            <span class="discount-badge-toggle">Economize 25%</span>
+        </div>
+
+        <div class="plans">
+            <div class="plan annual-only" id="plan-solo">
+                <h2>Solo</h2>
+                <div class="price" data-monthly="89" data-annual="89">
+                    R$ <span class="price-value">89</span>
+                </div>
+                <div class="price-period">
+                    <span class="annual-period">por ano (R$ 7,42/mês)</span>
+                </div>
+                <div class="payment-methods">
+                    <span class="payment-badge active annual-payment">💳 Cartão</span>
+                    <span class="payment-badge active annual-payment">💠 <span class="pix-icon">PIX</span></span>
+                </div>
+                <ul>
+                    <li>1 conta de e-mail</li>
+                    <li>Sem domínio incluso</li>
+                    <li>200 GB de armazenamento</li>
+                    <li>Gmail profissional</li>
+                    <li>Google Drive</li>
+                    <li>Google Meet</li>
+                    <li>Calendar, Docs, Sheets, Slides</li>
+                    <li>Forms e Sites</li>
+                    <li>Suporte por e-mail</li>
+                </ul>
+                <center><a href="https://pay.cakto.com.br/tnywrjz" class="cta plan-cta-solo">Assinar Agora</a></center>
+            </div>
+
+            <div class="plan">
+                <h2>Básico</h2>
+                <div class="price" data-monthly="25" data-annual="224">
+                    R$ <span class="price-value">224</span>
+                </div>
+                <div class="price-period">
+                    <span class="monthly-period" style="display: none;">por mês</span>
+                    <span class="annual-period">por ano (R$ 18,67/mês)</span>
+                </div>
+                <div class="payment-methods">
+                    <span class="payment-badge active monthly-payment" style="display: none;">💳 Cartão</span>
+                    <span class="payment-badge active annual-payment">💳 Cartão</span>
+                    <span class="payment-badge active annual-payment">💠 <span class="pix-icon">PIX</span></span>
+                </div>
+                <ul>
+                    <li>5 contas de e-mail</li>
+                    <li>1 domínio personalizado</li>
+                    <li>200 GB de armazenamento</li>
+                    <li>Gmail profissional</li>
+                    <li>Google Drive</li>
+                    <li>Google Meet</li>
+                    <li>Calendar, Docs, Sheets, Slides</li>
+                    <li>Forms e Sites</li>
+                    <li>Gemini (IA integrada)</li>
+                    <li>Suporte via WhatsApp</li>
+                </ul>
+                <center><a href="https://pay.cakto.com.br/ipqz4aj" class="cta plan-cta-basico">Assinar Agora</a></center>
+            </div>
+
+            <div class="plan featured">
+                <h2>Premium</h2>
+                <div class="price" data-monthly="32" data-annual="294">
+                    R$ <span class="price-value">294</span>
+                </div>
+                <div class="price-period">
+                    <span class="monthly-period" style="display: none;">por mês</span>
+                    <span class="annual-period">por ano (R$ 24,50/mês)</span>
+                </div>
+                <div class="payment-methods">
+                    <span class="payment-badge active monthly-payment" style="display: none;">💳 Cartão</span>
+                    <span class="payment-badge active annual-payment">💳 Cartão</span>
+                    <span class="payment-badge active annual-payment">💠 <span class="pix-icon">PIX</span></span>
+                </div>
+                <ul>
+                    <li>5 contas de e-mail</li>
+                    <li>1 domínio personalizado</li>
+                    <li><strong>1 TB de armazenamento</strong></li>
+                    <li>Gmail profissional</li>
+                    <li>Google Drive</li>
+                    <li>Google Meet</li>
+                    <li>Calendar, Docs, Sheets, Slides</li>
+                    <li>Forms e Sites</li>
+                    <li>Gemini (IA integrada)</li>
+                    <li><strong>NotebookLM (IA Avançada)</strong></li>
+                    <li>Suporte via WhatsApp</li>
+                </ul>
+                <center><a href="https://pay.cakto.com.br/muaqwkh" class="cta plan-cta-premium">Assinar Agora</a></center>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-menu">
+                    <h4>Nossos Serviços</h4>
+                    <ul>
+                        <li><a href="https://sucesso.net.br">Agência de Marketing</a></li>
+                        <li><a href="/google">Google Workspace</a></li>
+                        <li><a href="/microsoft">Microsoft 365</a></li>
+                        <li><a href="/canva">Canva Pro</a></li>
+                    </ul>
+                </div>
+                <div class="footer-logo">
+                    <img src="https://sucesso.net.br/formsites/logo-sucesso-white.png?v=5" alt="Sucesso Empresarial">
+                </div>
+                <div class="footer-contact">
+                    <h4>Fale Conosco</h4>
+                    <a href="https://wa.me/5527920000167" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Agência do Sucesso - Sucesso Empresarial<br>Todos os direitos reservados.</p>
+                <p class="footer-credits">Site desenvolvido pela <a href="https://sucesso.net.br" target="_blank">Agência do Sucesso Empresarial</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Mensal/Anual
+        const toggle = document.getElementById('billing-toggle');
+        const monthlyLabel = document.getElementById('monthly-label');
+        const annualLabel = document.getElementById('annual-label');
+        const priceElements = document.querySelectorAll('.price');
+        const monthlyPeriods = document.querySelectorAll('.monthly-period');
+        const annualPeriods = document.querySelectorAll('.annual-period');
+        const monthlyPayments = document.querySelectorAll('.monthly-payment');
+        const annualPayments = document.querySelectorAll('.annual-payment');
+        
+        // URLs dos planos
+        const planUrls = {
+            solo: {
+                annual: 'https://pay.cakto.com.br/tnywrjz'
+            },
+            basico: {
+                monthly: 'https://pay.cakto.com.br/a97x4px',
+                annual: 'https://pay.cakto.com.br/ipqz4aj'
+            },
+            premium: {
+                monthly: 'https://pay.cakto.com.br/38j3kvp',
+                annual: 'https://pay.cakto.com.br/muaqwkh'
+            }
+        };
+
+        const soloCard = document.getElementById('plan-solo');
+        
+        let isAnnual = true; // Começa no anual (padrão)
+
+        toggle.addEventListener('click', () => {
+            isAnnual = !isAnnual;
+            toggle.classList.toggle('active');
+            
+            if (isAnnual) {
+                monthlyLabel.classList.remove('active');
+                annualLabel.classList.add('active');
+                
+                // Atualiza preços
+                priceElements.forEach(el => {
+                    const annual = el.dataset.annual;
+                    el.querySelector('.price-value').textContent = annual;
+                });
+                
+                // Atualiza períodos
+                monthlyPeriods.forEach(el => el.style.display = 'none');
+                annualPeriods.forEach(el => el.style.display = 'block');
+                
+                // Atualiza badges de pagamento
+                monthlyPayments.forEach(el => el.style.display = 'none');
+                annualPayments.forEach(el => el.style.display = 'inline-flex');
+                
+                // Atualiza links dos botões
+                document.querySelector('.plan-cta-solo').href = planUrls.solo.annual;
+                document.querySelector('.plan-cta-basico').href = planUrls.basico.annual;
+                document.querySelector('.plan-cta-premium').href = planUrls.premium.annual;
+                soloCard.classList.remove('hidden');
+            } else {
+                monthlyLabel.classList.add('active');
+                annualLabel.classList.remove('active');
+                
+                // Atualiza preços
+                priceElements.forEach(el => {
+                    const monthly = el.dataset.monthly;
+                    el.querySelector('.price-value').textContent = monthly;
+                });
+                
+                // Atualiza períodos
+                monthlyPeriods.forEach(el => el.style.display = 'block');
+                annualPeriods.forEach(el => el.style.display = 'none');
+                
+                // Atualiza badges de pagamento
+                monthlyPayments.forEach(el => el.style.display = 'inline-flex');
+                annualPayments.forEach(el => el.style.display = 'none');
+                
+                // Atualiza links dos botões
+                document.querySelector('.plan-cta-basico').href = planUrls.basico.monthly;
+                document.querySelector('.plan-cta-premium').href = planUrls.premium.monthly;
+                soloCard.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

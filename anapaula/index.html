@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Paula Breda — Psicóloga</title>
+  <meta name="description" content="Ana Paula Breda Santos — Psicóloga CRP 14/22408. Atendimento psicológico para adolescentes e adultos. Agende sua consulta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sucesso.net.br/anapaula/">
+  <meta property="og:title" content="Ana Paula Breda — Psicóloga CRP 14/22408">
+  <meta property="og:description" content="Psicóloga especializada em atendimento para adolescentes e adultos. Acolhimento, desenvolvimento e resultados reais.">
+  <meta property="og:image" content="https://sucesso.net.br/anapaula/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Ana Paula Breda">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ana Paula Breda — Psicóloga">
+  <meta name="twitter:description" content="Psicóloga especializada em atendimento para adolescentes e adultos. CRP 14/22408.">
+  <meta name="twitter:image" content="https://sucesso.net.br/anapaula/og-image.jpg">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:       #faf7f5;
+      --bege:     #f0ebe4;
+      --lavanda:  #c9bcd4;
+      --rose:     #d4a9b0;
+      --verde:    #a8bfad;
+      --preto:    #2c2630;
+      --cinza:    #8a8090;
+      --branco:   #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--preto);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 18px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(250, 247, 245, 0.93);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,188,212,.2);
+    }
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      opacity: .9;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--cinza);
+      font-size: .75rem; letter-spacing: .15em; text-transform: uppercase;
+      font-weight: 400; transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--lavanda); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 48px 80px;
+      background: var(--bg);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; right: -80px; top: 50%;
+      transform: translateY(-50%);
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,188,212,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute; left: 10%; bottom: 10%;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,169,176,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 620px; }
+    .hero-tag {
+      display: inline-block;
+      padding: 6px 18px;
+      border: 1px solid var(--lavanda);
+      color: var(--lavanda);
+      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+      margin-bottom: 28px; border-radius: 40px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 400; line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .hero-title em { color: var(--lavanda); font-style: italic; }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 400; color: var(--cinza);
+      letter-spacing: .1em; margin-bottom: 32px;
+    }
+    .hero-logo {
+      width: 320px; max-width: 100%;
+      margin-bottom: 28px;
+      opacity: .92;
+    }
+    .hero-crp {
+      font-size: .75rem; color: var(--cinza);
+      letter-spacing: .1em; margin-bottom: 48px;
+    }
+    .hero-divider {
+      width: 48px; height: 2px;
+      background: linear-gradient(90deg, var(--lavanda), var(--rose));
+      margin-bottom: 48px; border-radius: 2px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px;
+      background: var(--lavanda); color: var(--branco);
+      text-decoration: none; border-radius: 40px;
+      font-size: .8rem; letter-spacing: .1em; font-weight: 500;
+      transition: all .3s;
+    }
+    .btn-primary:hover { background: #b8a8c8; transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px;
+      border: 1px solid var(--preto); color: var(--preto);
+      text-decoration: none; border-radius: 40px;
+      font-size: .8rem; letter-spacing: .1em; font-weight: 400;
+      transition: all .3s;
+    }
+    .btn-outline:hover { background: var(--preto); color: var(--branco); }
+
+    /* ── SOBRE ── */
+    #sobre {
+      padding: 100px 48px;
+      background: var(--branco);
+    }
+    .sobre-grid {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center;
+    }
+    .sobre-visual {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .sobre-card {
+      background: var(--bg);
+      border-radius: 20px; padding: 32px;
+      border-left: 3px solid var(--lavanda);
+    }
+    .sobre-card-icon { font-size: 1.5rem; margin-bottom: 12px; }
+    .sobre-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; margin-bottom: 8px;
+    }
+    .sobre-card p { font-size: .85rem; color: var(--cinza); }
+    .section-tag {
+      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--lavanda); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 400; line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .section-divider {
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, var(--lavanda), var(--rose));
+      margin-bottom: 24px; border-radius: 2px;
+    }
+    .sobre-texto p { color: #555; margin-bottom: 16px; font-size: .9rem; }
+
+    /* ── ESPECIALIDADES ── */
+    #especialidades {
+      padding: 100px 48px;
+      background: var(--bg);
+    }
+    .esp-inner { max-width: 1000px; margin: 0 auto; }
+    .esp-header { text-align: center; margin-bottom: 56px; }
+    .esp-header .section-divider { margin: 0 auto 0; }
+    .esp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .esp-card {
+      background: var(--branco);
+      border-radius: 20px; padding: 36px 28px;
+      text-align: center; transition: all .3s;
+      border: 1px solid transparent;
+    }
+    .esp-card:hover {
+      border-color: var(--lavanda);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(201,188,212,.2);
+    }
+    .esp-emoji { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .esp-nome {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; margin-bottom: 10px;
+    }
+    .esp-desc { font-size: .8rem; color: var(--cinza); line-height: 1.6; }
+
+    /* ── CTA ── */
+    #cta {
+      padding: 100px 48px;
+      background: linear-gradient(135deg, #2c2630 0%, #3d3345 100%);
+      text-align: center; color: var(--branco);
+    }
+    #cta .section-tag { color: var(--lavanda); }
+    #cta .section-title { color: var(--branco); }
+    #cta p {
+      color: rgba(255,255,255,.6); max-width: 480px;
+      margin: 0 auto 48px; font-size: .9rem;
+    }
+
+    /* ── CONTATO ── */
+    #contato { padding: 100px 48px; background: var(--branco); text-align: center; }
+    .contato-inner { max-width: 600px; margin: 0 auto; }
+    .social-links {
+      display: flex; gap: 16px; justify-content: center;
+      flex-wrap: wrap; margin-top: 48px;
+    }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px; border-radius: 40px;
+      text-decoration: none; font-size: .8rem;
+      font-weight: 500; transition: all .3s;
+    }
+    .social-wpp { background: #25D366; color: #fff; }
+    .social-wpp:hover { background: #1ebe5d; transform: translateY(-2px); }
+    .social-ig { background: linear-gradient(45deg, #f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; }
+    .social-ig:hover { opacity: .9; transform: translateY(-2px); }
+    .social-fb { background: #1877F2; color: #fff; }
+    .social-fb:hover { background: #1565c0; transform: translateY(-2px); }
+    .contato-email {
+      margin-top: 32px; font-size: .85rem; color: var(--cinza);
+    }
+    .contato-email a { color: var(--lavanda); text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--preto); color: rgba(255,255,255,.35);
+      text-align: center; padding: 28px 48px;
+      font-size: .75rem; letter-spacing: .08em;
+    }
+    .footer-credits { margin-top: 10px; font-size: .7rem; }
+    .footer-credits a { color: var(--lavanda); text-decoration: none; opacity: .8; }
+    .footer-credits a:hover { opacity: 1; }
+    .social-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      #hero, #sobre, #especialidades, #cta, #contato { padding: 70px 24px; }
+      .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-outline { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="logo.png" alt="Ana Paula Breda"></div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#especialidades">Especialidades</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <img src="logo.png" alt="Ana Paula Breda" class="hero-logo">
+    <span class="hero-tag">Psicóloga · CRP 14/22408</span>
+    <h1 class="hero-title">Um espaço seguro<br>para ser <em>você</em></h1>
+    <p class="hero-crp">Psicóloga · Formada pela Faculdade Estácio de Sá</p>
+    <div class="hero-divider"></div>
+    <div class="hero-actions">
+      <a href="https://wa.me/5567993007100?text=Olá%20Ana%20Paula!%20Gostaria%20de%20agendar%20uma%20consulta."
+         class="btn-primary" target="_blank">
+        💬 Agendar Consulta
+      </a>
+      <a href="#sobre" class="btn-outline">Saiba mais</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-grid">
+    <div class="sobre-visual">
+      <div class="sobre-card">
+        <div class="sobre-card-icon">🌱</div>
+        <h4>Acolhimento</h4>
+        <p>Um ambiente de escuta ativa, sem julgamentos, onde você pode se expressar livremente.</p>
+      </div>
+      <div class="sobre-card" style="border-color: var(--rose);">
+        <div class="sobre-card-icon">💜</div>
+        <h4>Desenvolvimento</h4>
+        <p>Ferramentas práticas para autoconhecimento e transformação real na sua vida.</p>
+      </div>
+      <div class="sobre-card" style="border-color: var(--verde);">
+        <div class="sobre-card-icon">✨</div>
+        <h4>Resultados</h4>
+        <p>Foco no seu bem-estar emocional e no desenvolvimento do seu potencial.</p>
+      </div>
+    </div>
+    <div class="sobre-texto">
+      <p class="section-tag">Quem sou eu</p>
+      <h2 class="section-title">Psicologia que transforma vidas</h2>
+      <div class="section-divider"></div>
+      <p>Sou Ana Paula Breda Santos, psicóloga dedicada a oferecer um espaço terapêutico seguro e acolhedor. Acredito que cada pessoa carrega em si mesma a capacidade de crescer e superar seus desafios.</p>
+      <p>Meu trabalho é caminhar ao seu lado nesse processo, oferecendo suporte, escuta qualificada e ferramentas para que você possa se conhecer melhor e construir uma vida mais plena.</p>
+      <p>Atendo adolescentes e adultos que buscam cuidar da saúde mental, superar momentos difíceis e desenvolver todo o seu potencial.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section id="especialidades">
+  <div class="esp-inner">
+    <div class="esp-header">
+      <p class="section-tag">Como posso te ajudar</p>
+      <h2 class="section-title">Especialidades</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="esp-grid">
+      <div class="esp-card">
+        <span class="esp-emoji">🧠</span>
+        <h3 class="esp-nome">Ansiedade</h3>
+        <p class="esp-desc">Estratégias para lidar com a ansiedade e recuperar a tranquilidade no dia a dia.</p>
+      </div>
+      <div class="esp-card">
+        <span class="esp-emoji">💙</span>
+        <h3 class="esp-nome">Depressão</h3>
+        <p class="esp-desc">Suporte emocional e acompanhamento para atravessar momentos de tristeza profunda.</p>
+      </div>
+      <div class="esp-card">
+        <span class="esp-emoji">🌸</span>
+        <h3 class="esp-nome">Autoestima</h3>
+        <p class="esp-desc">Trabalho de autoconhecimento para fortalecer sua relação com você mesma.</p>
+      </div>
+      <div class="esp-card">
+        <span class="esp-emoji">🤝</span>
+        <h3 class="esp-nome">Relacionamentos</h3>
+        <p class="esp-desc">Melhora nos vínculos familiares, afetivos e sociais através do autoconhecimento.</p>
+      </div>
+      <div class="esp-card">
+        <span class="esp-emoji">🌱</span>
+        <h3 class="esp-nome">Adolescência</h3>
+        <p class="esp-desc">Acompanhamento especializado nas transformações e desafios da adolescência.</p>
+      </div>
+      <div class="esp-card">
+        <span class="esp-emoji">🎯</span>
+        <h3 class="esp-nome">Desenvolvimento</h3>
+        <p class="esp-desc">Foco no crescimento pessoal e no alcance do seu potencial máximo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <p class="section-tag">Pronta para começar?</p>
+  <h2 class="section-title" style="color:#fff">Dê o primeiro passo<br>para o seu bem-estar</h2>
+  <div class="section-divider" style="margin: 0 auto 28px;"></div>
+  <p>A terapia é um investimento em você mesma. Entre em contato e agende sua primeira consulta.</p>
+  <a href="https://wa.me/5567993007100?text=Olá%20Ana%20Paula!%20Gostaria%20de%20agendar%20uma%20consulta."
+     class="btn-primary" target="_blank" style="margin: 0 auto; display: inline-flex;">
+    💬 Falar pelo WhatsApp
+  </a>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="contato-inner">
+    <p class="section-tag">Vamos conversar</p>
+    <h2 class="section-title">Entre em contato</h2>
+    <div class="section-divider" style="margin: 0 auto 0;"></div>
+    <div class="social-links">
+      <a href="https://wa.me/5567993007100" class="social-btn social-wpp" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.513 5.83L.057 23.486a.5.5 0 00.6.628l5.848-1.53A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.732.978.995-3.63-.235-.374A9.869 9.869 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/>
+        </svg>
+        WhatsApp
+      </a>
+      <a href="https://instagram.com/" class="social-btn social-ig" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        Instagram
+      </a>
+      <a href="https://facebook.com/" class="social-btn social-fb" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        Facebook
+      </a>
+    </div>
+    <p class="contato-email">
+      ou envie um email: <a href="mailto:apdireito@yahoo.com.br">apdireito@yahoo.com.br</a>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Ana Paula Breda Santos · Psicóloga CRP 14/22408</p>
+  <p class="footer-credits">Site desenvolvido pela <a href="https://sucesso.net.br" target="_blank">Agência do Sucesso Empresarial</a></p>
+</footer>
+
+
+  <!-- WhatsApp Float -->
+  <style>
+  .wpp-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 999;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(37,211,102,.45);
+    transition: transform .3s, box-shadow .3s;
+    text-decoration: none;
+  }
+  .wpp-float:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,.6); }
+  .wpp-float svg { width: 30px; height: 30px; }
+  </style>
+  <a class="wpp-float" target="_blank" title="Falar pelo WhatsApp" href="https://wa.me/5567993007100?text=Olá%20Ana%20Paula!%20Vim%20pelo%20site.">
+    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.513 5.83L.057 23.486a.5.5 0 00.6.628l5.848-1.53A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.732.978.995-3.63-.235-.374A9.869 9.869 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/>
+    </svg>
+  </a>
+
+</body>
+</html>

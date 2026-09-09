@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ Pagamento Aprovado - Escolha seu Email</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .success-icon {
+            text-align: center;
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .info-value {
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .email-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .domain {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 16px;
+        }
+        
+        .suggestions {
+            background: #f0f4ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .suggestions-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .suggestion-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 5px 5px 5px 0;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 20px;
+            color: #667eea;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .suggestion-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .status-message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status-checking {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script defer data-domain="sucesso.net.br" src="https://analise.mais.top/js/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">🎉</div>
+        <h1>Pagamento Aprovado!</h1>
+        <p class="subtitle">Agora escolha seu email profissional</p>
+        
+        <div class="info-box">
+            <div class="info-row">
+                <span class="info-label">Nome:</span>
+                <span class="info-value" id="customerName">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Email atual:</span>
+                <span class="info-value" id="customerEmail">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Celular:</span>
+                <span class="info-value" id="customerPhone">-</span>
+            </div>
+        </div>
+        
+        <form id="emailForm">
+            <div class="form-group">
+                <label for="username">Escolha seu email profissional:</label>
+                <div class="email-input-wrapper">
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="seuusername"
+                        autocomplete="off"
+                        required
+                    >
+                    <span class="domain">@mais.top</span>
+                </div>
+                
+                <div class="suggestions">
+                    <div class="suggestions-title">💡 Sugestões:</div>
+                    <div id="suggestionsList"></div>
+                </div>
+                
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+            
+            <button type="button" class="btn btn-primary" id="checkBtn">
+                Verificar Disponibilidade
+            </button>
+            
+            <button type="submit" class="btn btn-primary" id="createBtn" style="display:none;">
+                ✨ Criar Minha Conta Google Workspace
+            </button>
+        </form>
+    </div>
+    
+    <script>
+        // Parse URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const customerId = urlParams.get('customer_id');
+        const customerName = urlParams.get('nome') || '';
+        const customerEmail = urlParams.get('email') || '';
+        const customerPhone = urlParams.get('celular') || '';
+        
+        // Preencher dados
+        document.getElementById('customerName').textContent = customerName;
+        document.getElementById('customerEmail').textContent = customerEmail;
+        document.getElementById('customerPhone').textContent = customerPhone;
+        
+        // Gerar sugestões
+        function generateSuggestions(fullname) {
+            const names = fullname.toLowerCase().trim().split(' ');
+            if (names.length === 0) return [];
+            
+            const suggestions = [];
+            
+            if (names.length >= 2) {
+                const first = names[0];
+                const last = names[names.length - 1];
+                
+                suggestions.push(first);
+                suggestions.push(`${first}.${last}`);
+                suggestions.push(`${first[0]}${last}`);
+                suggestions.push(`${first}${last[0]}`);
+            } else {
+                suggestions.push(names[0]);
+            }
+            
+            return suggestions.slice(0, 5);
+        }
+        
+        const suggestions = generateSuggestions(customerName);
+        const suggestionsList = document.getElementById('suggestionsList');
+        
+        suggestions.forEach(sugg => {
+            const btn = document.createElement('span');
+            btn.className = 'suggestion-btn';
+            btn.textContent = sugg + '@mais.top';
+            btn.onclick = () => {
+                document.getElementById('username').value = sugg;
+                checkAvailability();
+            };
+            suggestionsList.appendChild(btn);
+        });
+        
+        // Verificar disponibilidade
+        const usernameInput = document.getElementById('username');
+        const checkBtn = document.getElementById('checkBtn');
+        const createBtn = document.getElementById('createBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        
+        let isAvailable = false;
+        
+        async function checkAvailability() {
+            const username = usernameInput.value.trim().toLowerCase();
+            
+            if (!username) {
+                showStatus('error', 'Digite um nome de usuário');
+                return;
+            }
+            
+            // Validar formato (só letras, números, pontos, hífens)
+            if (!/^[a-z0-9.-]+$/.test(username)) {
+                showStatus('error', 'Use apenas letras, números, pontos e hífens');
+                return;
+            }
+            
+            showStatus('checking', 'Verificando disponibilidade...');
+            checkBtn.disabled = true;
+            
+            try {
+                const response = await fetch('https://api.sucesso.net.br/api/validate-email', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({username, domain: 'mais.top'})
+                });
+                
+                const data = await response.json();
+                
+                if (data.available) {
+                    showStatus('success', `✅ ${username}@mais.top está disponível!`);
+                    isAvailable = true;
+                    createBtn.style.display = 'block';
+                } else {
+                    showStatus('error', `❌ ${username}@mais.top já está em uso. Tente outro.`);
+                    isAvailable = false;
+                    createBtn.style.display = 'none';
+                }
+            } catch (error) {
+                showStatus('error', 'Erro ao verificar. Tente novamente.');
+                isAvailable = false;
+            } finally {
+                checkBtn.disabled = false;
+            }
+        }
+        
+        function showStatus(type, message) {
+            statusMessage.className = `status-message status-${type}`;
+            statusMessage.textContent = message;
+            statusMessage.style.display = 'block';
+        }
+        
+        checkBtn.addEventListener('click', checkAvailability);
+        
+        usernameInput.addEventListener('input', () => {
+            isAvailable = false;
+            createBtn.style.display = 'none';
+            statusMessage.style.display = 'none';
+        });
+        
+        // Criar conta
+        document.getElementById('emailForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!isAvailable) {
+                showStatus('error', 'Verifique a disponibilidade primeiro');
+                return;
+            }
+            
+            const username = usernameInput.value.trim().toLowerCase();
+            
+            createBtn.disabled = true;
+            createBtn.innerHTML = 'Criando sua conta... <div class="loader"></div>';
+            
+            try {
+                const response = await fetch('https://api.sucesso.net.br/api/create-workspace-user', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        customer_id: customerId,
+                        username: username,
+                        domain: 'mais.top',
+                        fullname: customerName,
+                        email: customerEmail,
+                        phone: customerPhone
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Sucesso! Redirecionar para página de boas-vindas
+                    window.location.href = 'https://sucesso.net.br/google-sucesso?email=' + data.email;
+                } else {
+                    showStatus('error', 'Erro ao criar conta: ' + (data.error || 'Tente novamente'));
+                    createBtn.disabled = false;
+                    createBtn.innerHTML = '✨ Criar Minha Conta Google Workspace';
+                }
+            } catch (error) {
+                showStatus('error', 'Erro ao criar conta. Entre em contato com o suporte.');
+                createBtn.disabled = false;
+                createBtn.innerHTML = '✨ Criar Minha Conta Google Workspace';
+            }
+        });
+    </script>
+</body>
+</html>

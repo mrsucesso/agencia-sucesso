@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft 365 - Sucesso Empresarial</title>
+    <meta name="description" content="Microsoft 365 para sua empresa: Outlook, Word, Excel, PowerPoint, OneDrive e Teams. R$ 244/ano.">
+    <meta name="theme-color" content="#0078D4">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></noscript>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { 
+            background: linear-gradient(135deg, rgba(66, 133, 244, 0.2) 0%, rgba(100, 181, 246, 0.2) 100%), 
+                        url('https://www.incopyme.com/wp-content/uploads/2025/10/microsoft-365-secretos-que-no-conocias.webp') center/cover; 
+            color: white; 
+            padding: 80px 0; 
+            text-align: center; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .logo-header { font-size: 4em; margin-bottom: 20px; }
+        header h1 { font-size: 3em; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        header p { font-size: 1.4em; opacity: 0.95; max-width: 700px; margin: 0 auto; }
+        
+        .intro { background: white; padding: 60px 0; text-align: center; }
+        .intro h2 { color: #0078D4; font-size: 2.5em; margin-bottom: 20px; }
+        .intro p { font-size: 1.3em; color: #666; max-width: 800px; margin: 0 auto 40px; }
+        
+        .features { padding: 60px 0; }
+        .features h2 { text-align: center; color: #0078D4; font-size: 2.5em; margin-bottom: 50px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .feature-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .feature-icon { font-size: 3.5em; margin-bottom: 20px; color: #0078D4; }
+        .feature-card h3 { color: #0078D4; font-size: 1.5em; margin-bottom: 15px; }
+        .feature-card p { color: #666; }
+        
+        .hero { background: linear-gradient(135deg, #0078D4 0%, #50E6FF 100%); color: white; padding: 80px 0; text-align: center; margin: 60px 0; }
+        .hero h2 { font-size: 2.8em; margin-bottom: 30px; }
+        .price { font-size: 4em; margin: 30px 0; font-weight: bold; }
+        .price span { font-size: 0.4em; opacity: 0.9; }
+        .price-note { font-size: 1.3em; margin-bottom: 30px; opacity: 0.9; }
+        .features-list { list-style: none; text-align: left; max-width: 700px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .features-list li { padding: 12px; font-size: 1.15em; }
+        .features-list li:before { content: "✓ "; font-weight: bold; margin-right: 10px; font-size: 1.3em; }
+        .cta { display: inline-block; background: white; color: #0078D4; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-size: 1.3em; font-weight: bold; margin-top: 30px; transition: all 0.3s; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+        .cta:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
+        
+        .apps { padding: 60px 0; background: white; }
+        .apps h2 { text-align: center; color: #0078D4; font-size: 2.5em; margin-bottom: 50px; }
+        .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto; }
+        .app-item { text-align: center; padding: 30px; background: #f8f9fa; border-radius: 15px; transition: transform 0.3s, background 0.3s; }
+        .app-item:hover { transform: translateY(-5px); background: #e9ecef; }
+        .app-item i { font-size: 3.5em; color: #0078D4; margin-bottom: 15px; }
+        .app-item h3 { color: #0078D4; margin-top: 15px; font-size: 1.5em; }
+        .app-item p { color: #666; margin-top: 10px; }
+        
+        .benefits { background: #0078D4; color: white; padding: 60px 0; }
+        .benefits h2 { text-align: center; font-size: 2.5em; margin-bottom: 50px; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .benefit-item { text-align: center; padding: 20px; }
+        .benefit-item i { font-size: 3.5em; margin-bottom: 15px; }
+        .benefit-item h3 { font-size: 1.5em; margin: 15px 0; }
+        
+        footer {
+            background: linear-gradient(135deg, #0056A3 0%, #003B73 100%);
+            color: white;
+            padding: 60px 20px 30px;
+            margin-top: 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-logo {
+            text-align: center;
+        }
+        
+        .footer-logo img {
+            max-width: 200px;
+        }
+        
+        .footer-menu {
+            text-align: left;
+        }
+        
+        .footer-menu h4 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .footer-menu ul {
+            list-style: none;
+        }
+        
+        .footer-menu li {
+            margin: 5px 0;
+        }
+        
+        .footer-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-menu a:hover {
+            color: #64B5F6;
+        }
+        
+        .footer-contact {
+            text-align: right;
+        }
+        
+        .footer-contact h4 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: transform 0.3s;
+            font-size: 1em;
+        }
+        
+        .whatsapp i {
+            margin-right: 8px;
+        }
+        
+        .whatsapp:hover {
+            transform: scale(1.05);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 30px;
+            text-align: center;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-bottom p {
+            opacity: 0.8;
+            margin: 5px 0;
+        }
+        
+        .footer-credits {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .footer-credits a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) { 
+            header h1 { font-size: 2em; } 
+            .logo-header { font-size: 3em; }
+            .hero { padding: 30px 20px; } 
+            .price { font-size: 2.5em; }
+            .features-grid { grid-template-columns: 1fr; }
+            .features-list { grid-template-columns: 1fr; }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .footer-menu,
+            .footer-contact {
+                text-align: center;
+            }
+        }
+    </style>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Microsoft 365 - Sucesso Empresarial">
+    <meta property="og:description" content="Word, Excel, Teams, Outlook e 1TB OneDrive com Microsoft 365 para sua empresa.">
+    <meta property="og:image" content="https://sucesso.net.br/formsites/og-image-principal.jpg">
+    <meta property="og:url" content="https://sucesso.net.br/microsoft/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://sucesso.net.br/formsites/og-image-principal.jpg">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-header"><i class="fab fa-microsoft"></i></div>
+            <h1>Microsoft 365</h1>
+            <p>As ferramentas de produtividade mais usadas no mundo</p>
+        </div>
+    </header>
+
+    <div class="intro">
+        <div class="container">
+            <h2>Office na Nuvem para Sua Empresa</h2>
+            <p>Tenha acesso a Word, Excel, PowerPoint, Outlook e Teams online. Trabalhe de qualquer lugar com as ferramentas que você já conhece.</p>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="container">
+            <h2>Por que escolher Microsoft 365?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <h3>E-mail Profissional</h3>
+                    <p>Outlook com seu domínio personalizado. Interface familiar e poderosa.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-word"></i></div>
+                    <h3>Word Online</h3>
+                    <p>Crie e edite documentos profissionais de qualquer lugar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-excel"></i></div>
+                    <h3>Excel Online</h3>
+                    <p>Planilhas poderosas com fórmulas e gráficos avançados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-powerpoint"></i></div>
+                    <h3>PowerPoint Online</h3>
+                    <p>Apresentações profissionais que impressionam.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h3>OneDrive (1TB)</h3>
+                    <p>1 TB de armazenamento por usuário na nuvem da Microsoft.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
+                    <h3>Microsoft Teams</h3>
+                    <p>Reúna sua equipe com chat, vídeo e colaboração.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Segurança Enterprise</h3>
+                    <p>Proteção de dados com criptografia de nível empresarial.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Sempre Atualizado</h3>
+                    <p>Atualizações automáticas sem custo adicional.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Sincronização Automática</h3>
+                    <p>Seus arquivos sincronizados no PC, celular e tablet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="container">
+            <h2>Plano Empresarial</h2>
+            <div class="price">R$ 244<span>/ano</span></div>
+            <p class="price-note">Apenas R$ 20,33/mês • 5 usuários inclusos</p>
+            
+            <ul class="features-list">
+                <li>5 contas de e-mail profissionais</li>
+                <li>1 domínio personalizado incluído</li>
+                <li>1 TB de OneDrive por conta (5TB total!)</li>
+                <li>Outlook Online completo</li>
+                <li>Word, Excel, PowerPoint (web)</li>
+                <li>Microsoft Teams e Skype</li>
+                <li>Aplicativos sempre atualizados</li>
+                <li>Colaboração em tempo real</li>
+                <li>Acesso de qualquer dispositivo</li>
+                <li>Suporte via WhatsApp</li>
+            </ul>
+            
+            <a href="https://www.asaas.com/c/4tpduy5mtk9j49v4" class="cta">Assinar Agora</a>
+        </div>
+    </div>
+
+    <div class="apps">
+        <div class="container">
+            <h2>Aplicativos Inclusos</h2>
+            <div class="apps-grid">
+                <div class="app-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Outlook</h3>
+                    <p>E-mail profissional</p>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-file-word"></i>
+                    <h3>Word</h3>
+                    <p>Editor de textos</p>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>Excel</h3>
+                    <p>Planilhas profissionais</p>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-file-powerpoint"></i>
+                    <h3>PowerPoint</h3>
+                    <p>Apresentações</p>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-cloud"></i>
+                    <h3>OneDrive</h3>
+                    <p>Armazenamento 1TB</p>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Teams</h3>
+                    <p>Colaboração e vídeo</p>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Calendar</h3>
+                    <p>Agenda profissional</p>
+                </div>
+                <div class="app-item">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>To Do</h3>
+                    <p>Gerenciador de tarefas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="benefits">
+        <div class="container">
+            <h2>Benefícios do Microsoft 365</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-lock"></i>
+                    <h3>Segurança</h3>
+                    <p>Proteção avançada contra ameaças e malware</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-globe"></i>
+                    <h3>Acesse de qualquer lugar</h3>
+                    <p>Trabalhe do escritório, casa ou onde estiver</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Colaboração</h3>
+                    <p>Trabalhe em equipe em tempo real nos documentos</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Custo-benefício</h3>
+                    <p>R$ 244/ano para 5 usuários = R$ 4,09/mês por pessoa!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-menu">
+                    <h4>Nossos Serviços</h4>
+                    <ul>
+                        <li><a href="https://sucesso.net.br">Agência de Marketing</a></li>
+                        <li><a href="/google">Google Workspace</a></li>
+                        <li><a href="/microsoft">Microsoft 365</a></li>
+                        <li><a href="/canva">Canva Pro</a></li>
+                    </ul>
+                </div>
+                <div class="footer-logo">
+                    <img src="https://sucesso.net.br/formsites/logo-sucesso-white.png?v=5" alt="Sucesso Empresarial">
+                </div>
+                <div class="footer-contact">
+                    <h4>Fale Conosco</h4>
+                    <a href="https://wa.me/5527920000167" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Agência do Sucesso - Sucesso Empresarial<br>Todos os direitos reservados.</p>
+                <p class="footer-credits">Site desenvolvido pela <a href="https://sucesso.net.br" target="_blank">Agência do Sucesso Empresarial</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

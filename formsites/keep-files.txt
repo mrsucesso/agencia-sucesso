@@ -1,0 +1,5 @@
+favicon-2026.ico
+og-image.jpg
+og-image-principal.jpg
+logo-sucesso-white.png
+index.html
