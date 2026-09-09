@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sucesso.net.br/sitemap.xml
+Sitemap: https://agencia.sucesso.com.br/sitemap.xml
