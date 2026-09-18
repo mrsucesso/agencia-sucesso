@@ -105,7 +105,33 @@ CTAs:
 
 ## Direção visual
 
-Usar logo/identidade fornecida pelo cliente como base.
+Usar a **logo oficial da Infinity Spa & Pools** como fonte primária da identidade.
+
+### Paleta da marca a usar no site
+```css
+--infinity-turquoise-light: #17A8AD;
+--infinity-turquoise:       #278F94;
+--infinity-teal-dark:       #247278;
+--infinity-blue:            #227EB0;
+--infinity-gray:            #73787B;
+--infinity-white:           #FFFFFF;
+--infinity-bg:              #F4F7F8;
+--infinity-text:            #17363A;
+```
+
+As cores são aproximações extraídas da logo raster fornecida. Caso apareça SVG/manual oficial, substituir pelos valores oficiais.
+
+### Hierarquia cromática
+1. principal: `#278F94`;
+2. contraste/áreas escuras: `#247278`;
+3. acento: `#17A8AD`;
+4. acento secundário: `#227EB0`;
+5. neutros: branco, `#F4F7F8`, `#73787B`;
+6. texto: `#17363A`.
+
+**Não usar `#00AEEF` ou `#073B5C` como cores principais.** Esses tons pertenciam à hipótese visual preliminar e não correspondem bem à logo recebida.
+
+Gradientes, quando usados, devem seguir a própria assinatura visual da marca: **turquesa → teal escuro**, com moderação.
 
 Sensação:
 - contemporâneo;
