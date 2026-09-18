@@ -212,19 +212,42 @@ Incluir:
 
 ## 9. Identidade visual
 
-Basear o design na identidade/logo fornecida pela cliente:
-- turquesa/verde-água;
-- azul piscina;
-- azul profundo;
-- branco;
-- cinzas muito claros.
+A paleta deve ser extraída da **logo oficial da Infinity Spa & Pools**, e não dos posts do Instagram.
 
-Direção:
+### Paleta canônica aproximada da logo
+
+A logo trabalha com um gradiente de turquesa para verde-petróleo, azul médio nos elementos circulares/texto "Spa & Pools" e cinza na palavra "INFINITY".
+
+- **Turquesa claro / destaque:** `#17A8AD`
+- **Turquesa principal:** `#278F94`
+- **Verde-petróleo / teal escuro:** `#247278`
+- **Azul da marca:** `#227EB0`
+- **Cinza da assinatura:** `#73787B`
+- **Branco:** `#FFFFFF`
+- **Fundo neutro claro:** `#F4F7F8`
+- **Texto escuro recomendado:** `#17363A`
+
+> As cores acima são aproximações extraídas visualmente da arte raster recebida. Se posteriormente houver manual de marca, SVG ou arquivo vetorial oficial, ele prevalece.
+
+### Regra de uso
+- `#278F94` como cor institucional principal;
+- `#17A8AD` para detalhes, estados ativos e pequenos destaques;
+- `#247278` para áreas de contraste, títulos especiais e fundos escuros;
+- `#227EB0` como acento secundário, sem competir com o turquesa;
+- `#73787B` apenas como neutro de apoio — não como cor dominante;
+- fundos majoritariamente brancos ou `#F4F7F8`;
+- texto corrido preferencialmente em `#17363A` ou outro tom escuro com contraste AA.
+
+### Ajuste em relação à paleta preliminar
+Não usar como cores principais o ciano muito saturado `#00AEEF` nem o azul-marinho `#073B5C`. Eles se afastam da logo oficial. O site deve parecer uma extensão da marca, não uma nova identidade azul genérica de piscinas.
+
+### Direção
 - visual limpo e contemporâneo;
 - muito espaço em branco;
 - fotografias grandes;
 - menos aparência de panfleto/rede social;
-- evitar excesso de gradientes, sombras pesadas e elementos decorativos;
+- usar gradiente apenas quando fizer sentido e reproduzindo a lógica turquesa → teal da marca;
+- evitar sombras pesadas e elementos decorativos;
 - interface comercial séria, acessível e rápida.
 
 O Instagram não deve ser a referência estética principal. O site deve funcionar como sede digital da marca.
