@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --logo:url("../../canva/logo-sucesso.png");
+
   --navy:#061522; --navy2:#0D2A40; --teal:#2BB3C0;
   --bg:#F4F7FA; --surface:#FFFFFF; --surface2:#E9F0F5; --text:#0E2233; --muted:#4D6276; --line:#D3DDE6;
   --accent-ink:#0F6F79; --amber:#9A6700; --amber-bg:#FBF3DF; --amber-line:#E0A526;
@@ -48,7 +48,7 @@ section{padding:clamp(64px,10vw,120px) 0;position:relative}
 nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(6,21,34,.88);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
 nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font:700 15px var(--f-display);letter-spacing:.01em}
-.brand i{width:38px;height:38px;background:var(--logo) center/contain no-repeat;display:block}
+.brand-logo{width:46px;height:46px;object-fit:contain;flex-shrink:0;display:block}
 .links{display:none;gap:28px}
 .links a{color:#B7C7D5;text-decoration:none;font-weight:600;font-size:14px}
 .links a:hover{color:#fff}
@@ -66,8 +66,7 @@ nav.top .wrap{display:flex;align-items:center;justify-content:space-between;heig
 /* hero */
 .hero{position:relative;background:#061522;color:#fff;min-height:calc(100svh - 64px);display:flex;align-items:center;overflow:hidden;padding:72px 0 56px}
 .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(180deg,#000 30%,transparent 95%);-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 95%)}
-.seal{position:absolute;right:-12vmin;top:50%;width:min(88vmin,760px);aspect-ratio:1;translate:0 -50%;background:var(--logo) center/contain no-repeat;opacity:.07;animation:spin 160s linear infinite}
-@keyframes spin{to{rotate:360deg}}
+
 .hero .wrap{position:relative}
 .hero .kicker{color:#5ED0DB}
 .hero h1{color:#fff;font-size:clamp(2.7rem,8.4vw,6.4rem);font-weight:800;line-height:.95;letter-spacing:-.035em;max-width:13ch}
@@ -341,8 +340,8 @@ footer a{color:#B7C7D5}
 .source-note{font-size:12px;color:var(--muted);margin-top:16px}
 </style></head>
 <body><div id="progress" aria-hidden="true"></div>
-<nav class="top"><div class="wrap"><a class="brand" href="#topo"><i></i><span>Sucesso Empresarial</span></a><div class="links"><a href="#diagnostico">Diagnóstico</a><a href="#proposta">A proposta</a><a href="#investimento">Investimento</a><a href="#comecar">Como começar</a></div><a class="btn primary sm" href="#investimento">Ver investimento</a></div></nav>
-<header class="hero" id="topo"><div class="seal" aria-hidden="true"></div><div class="wrap">
+<nav class="top"><div class="wrap"><a class="brand" href="#topo"><img class="brand-logo" src="/formsites/logo-sucesso-white.png" alt=""><span>Sucesso Empresarial</span></a><div class="links"><a href="#diagnostico">Diagnóstico</a><a href="#proposta">A proposta</a><a href="#investimento">Investimento</a><a href="#comecar">Como começar</a></div><a class="btn primary sm" href="#investimento">Ver investimento</a></div></nav>
+<header class="hero" id="topo"><div class="wrap">
 <div class="kicker">Proposta Comercial · 1 de outubro de 2026</div>
 <h1>Quando o carro não liga, o cliente quer <em>resposta agora.</em></h1>
 <p class="sub">Uma proposta para transformar Google, site e WhatsApp da EDCAR em um fluxo mais claro de captação, confiança e atendimento.</p>
