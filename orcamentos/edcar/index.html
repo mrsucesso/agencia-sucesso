@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Proposta Comercial · EDCAR Auto Elétrica e Disk Bateria</title>
+<meta name="description" content="Proposta de presença digital e automação para a EDCAR Auto Elétrica e Disk Bateria, preparada pela Sucesso Empresarial.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --logo:url("../../canva/logo-sucesso.png");
+  --navy:#061522; --navy2:#0D2A40; --teal:#2BB3C0;
+  --bg:#F4F7FA; --surface:#FFFFFF; --surface2:#E9F0F5; --text:#0E2233; --muted:#4D6276; --line:#D3DDE6;
+  --accent-ink:#0F6F79; --amber:#9A6700; --amber-bg:#FBF3DF; --amber-line:#E0A526;
+  --good:#0F7A55; --bad:#B4322E;
+  --f-display:'Archivo',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-body:'Manrope',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#08131D; --surface:#0E2032; --surface2:#132C42; --text:#E7EFF6; --muted:#A2B5C6; --line:#1E3A52;
+    --accent-ink:#4CCBD8; --amber:#EDB955; --amber-bg:#2A2312; --good:#43CFA0; --bad:#FF8A84;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#08131D; --surface:#0E2032; --surface2:#132C42; --text:#E7EFF6; --muted:#A2B5C6; --line:#1E3A52;
+  --accent-ink:#4CCBD8; --amber:#EDB955; --amber-bg:#2A2312; --good:#43CFA0; --bad:#FF8A84;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{background:#061522;scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%}
+a{color:var(--accent-ink)}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;line-height:1.05;letter-spacing:-.02em;color:var(--text)}
+p{margin:0 0 1em}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+.kicker{font:700 12px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:28px;height:2px;background:var(--teal)}
+h2{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;max-width:18ch}
+h2.wide{max-width:24ch}
+.lead{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted);max-width:60ch;margin-top:20px}
+section{padding:clamp(64px,10vw,120px) 0;position:relative}
+
+/* barra de progresso + navegação */
+#progress{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;width:0;background:var(--teal);z-index:60;transition:width .1s linear}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(6,21,34,.88);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font:700 15px var(--f-display);letter-spacing:.01em}
+.brand i{width:38px;height:38px;background:var(--logo) center/contain no-repeat;display:block}
+.links{display:none;gap:28px}
+.links a{color:#B7C7D5;text-decoration:none;font-weight:600;font-size:14px}
+.links a:hover{color:#fff}
+@media(min-width:900px){.links{display:flex}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:12px;font:700 15px var(--f-body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--teal);color:#04141F}
+.btn.primary:hover{background:#4CC7D3}
+.btn.ghost{border-color:rgba(255,255,255,.28);color:#fff;background:transparent}
+.btn.ghost:hover{border-color:#fff}
+.btn.sm{min-height:42px;padding:0 18px;font-size:14px}
+.btn:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+
+/* hero */
+.hero{position:relative;background:#061522;color:#fff;min-height:calc(100svh - 64px);display:flex;align-items:center;overflow:hidden;padding:72px 0 56px}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(180deg,#000 30%,transparent 95%);-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 95%)}
+.seal{position:absolute;right:-12vmin;top:50%;width:min(88vmin,760px);aspect-ratio:1;translate:0 -50%;background:var(--logo) center/contain no-repeat;opacity:.07;animation:spin 160s linear infinite}
+@keyframes spin{to{rotate:360deg}}
+.hero .wrap{position:relative}
+.hero .kicker{color:#5ED0DB}
+.hero h1{color:#fff;font-size:clamp(2.7rem,8.4vw,6.4rem);font-weight:800;line-height:.95;letter-spacing:-.035em;max-width:13ch}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero p.sub{font-size:clamp(1.08rem,1.9vw,1.4rem);color:#B7C7D5;max-width:44ch;margin:28px 0 36px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;margin-top:64px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;max-width:820px}
+.stat{background:#0A1D2E;padding:22px 24px}
+.stat b{display:block;font:800 clamp(2rem,4vw,2.8rem)/1 var(--f-display);color:#fff;letter-spacing:-.03em}
+.stat b sup{font-size:.5em;color:var(--teal);vertical-align:top;margin-left:2px}
+.stat > span{display:block;margin-top:8px;font-size:13.5px;line-height:1.4;color:#9FB3C4}
+.meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:28px;font-size:13.5px;color:#8DA3B6}
+.meta b{color:#DCE7F0;font-weight:600}
+
+.grid>*,.diag>*,.invest>*,.tr2>*,.frentes>*,.funnels>*,.svc>*,.autom>*,.compare>*{min-width:0}
+@media(max-width:560px){.stat:last-child{grid-column:1/-1}.band-label{flex-wrap:wrap}}
+
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* cards */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+
+/* diagnóstico */
+.diag{display:grid;gap:36px;margin-top:48px;align-items:start}
+@media(min-width:960px){.diag{grid-template-columns:1.05fr 1fr}.diag > div:first-child{position:sticky;top:calc(96px + env(safe-area-inset-top,0px))}}
+.gcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(6,21,34,.35)}
+.gtoggle{display:flex;padding:6px;gap:6px;background:var(--surface2);border-bottom:1px solid var(--line)}
+.gtoggle button{flex:1;min-height:46px;border:0;border-radius:12px;background:transparent;color:var(--muted);font:700 14px var(--f-body);cursor:pointer;transition:background .25s,color .25s}
+.gtoggle button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.gbody{padding:24px}
+.ghead{display:flex;gap:14px;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.gav{width:52px;height:52px;border-radius:14px;background:var(--navy);color:#fff;display:grid;place-items:center;font:800 22px var(--f-display)}
+.ghead strong{display:block;font-size:17px}
+.ghead small{color:var(--muted);font-size:13.5px}
+.grow{padding:16px 0;border-bottom:1px dashed var(--line);display:grid;gap:4px}
+.grow:last-child{border-bottom:0;padding-bottom:0}
+.grow dt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.grow dd{margin:0;font-weight:600;position:relative;min-height:26px}
+.gcard [data-a],.gcard [data-b]{transition:opacity .35s,transform .35s}
+.gcard[data-state="before"] [data-a],.gcard[data-state="after"] [data-b]{position:absolute;inset:0 auto auto 0;opacity:0;transform:translateY(8px);pointer-events:none}
+.tag{display:inline-flex;align-items:center;gap:8px}
+.tag::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
+.bad{color:var(--bad)} .good{color:var(--good)}
+.gnote{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center}
+.points{display:grid;gap:14px}
+.point{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:20px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.point .n{font:800 26px/1 var(--f-display);color:var(--accent-ink)}
+.point h3{font-size:1.12rem;letter-spacing:-.01em;margin-bottom:6px}
+.point p{margin:0;color:var(--muted);font-size:15.5px}
+.point.good-news{background:var(--navy);border-color:var(--navy)}
+.point.good-news h3{color:#fff}.point.good-news p{color:#B3C4D3}.point.good-news .n{color:var(--teal)}
+.bignum{display:flex;align-items:baseline;gap:14px;margin-top:6px}
+.bignum b{font:800 3.4rem/1 var(--f-display);color:var(--bad);letter-spacing:-.04em}
+.bignum span{color:var(--muted);font-size:14px;max-width:24ch;line-height:1.35}
+
+/* mapa */
+.principle{margin-top:36px;padding:28px clamp(22px,4vw,40px);border-radius:20px;background:var(--navy);color:#fff;display:grid;gap:8px}
+.principle p{margin:0;font:700 clamp(1.25rem,2.6vw,1.9rem)/1.2 var(--f-display);letter-spacing:-.02em}
+.principle p:last-child{color:var(--teal)}
+.map{margin-top:40px;display:grid;gap:34px}
+.band-label{font:700 12px var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:12px;display:flex;justify-content:space-between;gap:12px}
+.band-label span:last-child{color:var(--muted);letter-spacing:.04em;text-transform:none;font-weight:600}
+.mc{display:flex;flex-direction:column;gap:10px;padding:24px;border-radius:18px;text-decoration:none;color:var(--text);background:var(--surface);border:1px solid var(--line);transition:transform .25s,border-color .25s,box-shadow .25s;height:100%}
+.mc:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:0 24px 40px -28px rgba(15,111,121,.55)}
+.mc h3{font-size:1.28rem}
+.mc p{color:var(--muted);font-size:15px;margin:0;flex:1}
+.mc .price{font:800 1.05rem var(--f-display);color:var(--accent-ink);letter-spacing:-.01em}
+.mc.core{background:var(--navy);border-color:var(--navy);color:#fff}
+.mc.core h3{color:#fff}.mc.core p{color:#B3C4D3}.mc.core .price{color:var(--teal)}
+.mc.core.main{box-shadow:inset 0 3px 0 var(--teal)}
+.badge{align-self:flex-start;font:700 11px var(--f-body);letter-spacing:.1em;text-transform:uppercase;background:var(--teal);color:#04141F;padding:5px 10px;border-radius:99px}
+.combos{margin-top:40px;overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.combos table{width:100%;border-collapse:collapse;min-width:560px;font-size:15px}
+.combos th,.combos td{text-align:left;padding:15px 20px;border-bottom:1px solid var(--line)}
+.combos th{font:700 12px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.combos tr:last-child td{border-bottom:0}
+.combos td:first-child{font-weight:700}
+.combos td:last-child{font-weight:700;color:var(--accent-ink);white-space:nowrap}
+
+/* reestruturação */
+.pricepill{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-top:26px;padding:16px 24px;border-radius:16px;background:var(--navy);color:#fff}
+.pricepill b{font:800 2.2rem/1 var(--f-display);color:var(--teal);letter-spacing:-.03em}
+.pricepill span{font-size:14px;color:#B3C4D3}
+.frentes{display:grid;gap:22px;margin-top:44px}
+@media(min-width:900px){.frentes{grid-template-columns:340px 1fr}}
+.tabs{display:grid;gap:8px;align-content:start}
+.tabs button{display:flex;align-items:center;gap:14px;text-align:left;min-height:58px;padding:10px 16px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:700 15px var(--f-body);cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.tabs button:hover{border-color:var(--teal)}
+.tabs button .num{flex:none;width:30px;height:30px;border-radius:9px;background:var(--surface2);display:grid;place-items:center;font:800 14px var(--f-display);color:var(--accent-ink)}
+.tabs button[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateX(4px)}
+.tabs button[aria-selected="true"] .num{background:var(--teal);color:#04141F}
+.tabs .site-flag{margin-left:auto;font:700 10px var(--f-body);letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:99px;background:var(--surface2);color:var(--muted)}
+.tabs button[aria-selected="true"] .site-flag{background:rgba(255,255,255,.14);color:#CFE3EE}
+.panel{border-radius:20px;background:var(--surface);border:1px solid var(--line);padding:clamp(24px,3.4vw,40px);min-height:300px;animation:fadeup .45s ease}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.panel h3{font-size:1.7rem;margin-bottom:14px}
+.panel .lbl{font:700 11.5px var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);margin:22px 0 8px}
+.panel p{margin:0;font-size:16.5px}
+.recv{display:flex;gap:12px;align-items:center;padding:14px 18px;border-radius:12px;background:var(--surface2);font-weight:700}
+.recv::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='%2304141F' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.onlyone{margin-top:14px;font-size:14.5px;color:var(--muted)}
+.note{display:flex;gap:14px;padding:18px 22px;border-radius:14px;background:var(--amber-bg);border-left:4px solid var(--amber-line);margin-top:26px;font-size:15.5px}
+.note b{color:var(--amber)}
+.note.neutral{background:var(--surface2);border-left-color:var(--teal)}
+.note.neutral b{color:var(--accent-ink)}
+#consultoria .note.neutral{background:var(--surface)}
+
+/* funis */
+.funnels{display:grid;gap:22px;margin-top:64px}
+@media(min-width:900px){.funnels{grid-template-columns:1fr 1fr}}
+.fun{background:var(--navy);border-radius:22px;padding:clamp(24px,3.4vw,38px);color:#fff}
+.fun h3{color:#fff;font-size:1.5rem}
+.fun .sub{color:#9FB3C4;font-size:14.5px;margin:6px 0 24px}
+.steps{display:grid;gap:8px;justify-items:center}
+.step{width:var(--w);min-width:60%;background:rgba(43,179,192,.16);border:1px solid rgba(94,208,219,.32);border-radius:12px;padding:12px 16px;text-align:center;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .8s;transition-delay:var(--d)}
+.js .step{transform:scaleX(.6);opacity:0}
+.js .in .step{transform:none;opacity:1}
+.step b{display:block;font:700 12px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:#5ED0DB}
+.step span{font-size:14.5px;color:#DCE7F0;line-height:1.35;display:block;margin-top:2px}
+.funfoot{grid-column:1/-1;text-align:center;color:var(--muted);font-size:15px}
+
+/* consultoria */
+.compare{display:grid;gap:16px;margin-top:44px}
+@media(min-width:800px){.compare{grid-template-columns:1fr 1fr}}
+.cmp{padding:28px;border-radius:20px;border:1px solid var(--line);background:var(--surface)}
+.cmp.us{background:var(--navy);border-color:var(--navy);color:#fff}
+.cmp small{font:700 11.5px var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cmp.us small{color:var(--teal)}
+.cmp h3{font-size:1.45rem;margin:10px 0}
+.cmp.us h3{color:#fff}
+.cmp p{margin:0;color:var(--muted)}
+.cmp.us p{color:#B3C4D3}
+.incl{margin-top:22px}
+.incl .card{padding:22px}
+.incl h4{font-size:1.08rem;letter-spacing:-.01em;margin:12px 0 8px}
+.incl p{margin:0;color:var(--muted);font-size:15px}
+.ico{width:42px;height:42px;border-radius:12px;background:var(--surface2);display:grid;place-items:center;color:var(--accent-ink)}
+.ico svg{width:22px;height:22px}
+
+/* tráfego */
+.tr2{display:grid;gap:18px;margin-top:44px}
+@media(min-width:900px){.tr2{grid-template-columns:1.2fr 1fr}}
+.tcard{border-radius:22px;padding:clamp(24px,3vw,36px);border:1px solid var(--line);background:var(--surface)}
+.tcard.pago{background:var(--surface2)}
+.tcard h3{font-size:1.7rem}
+.tcard .p{font:800 1.5rem var(--f-display);color:var(--accent-ink);margin:10px 0 16px;letter-spacing:-.02em}
+.tcard .p small{font:600 13.5px var(--f-body);color:var(--muted);letter-spacing:0}
+.tcard ul,.list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.tcard li,.list li{padding-left:28px;position:relative;font-size:16px}
+.tcard li::before,.list li::before{content:"";position:absolute;left:0;top:.42em;width:16px;height:16px;border-radius:50%;background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='%2304141F' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.chartbox{margin-top:22px;border-radius:22px;background:var(--navy);color:#fff;padding:clamp(22px,3vw,36px)}
+.chartbox h3{color:#fff;font-size:1.5rem}
+.chartbox .sub{color:#9FB3C4;font-size:14.5px;margin:6px 0 18px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px;margin-bottom:6px;color:#DCE7F0}
+.legend i{display:inline-block;width:22px;height:4px;border-radius:2px;margin-right:8px;vertical-align:middle}
+svg.chart{width:100%;height:auto;display:block}
+svg.chart text{fill:#8DA3B6;font:600 11px var(--f-body)}
+.slider{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:14px}
+.slider label{font-weight:700;font-size:15px}
+.slider output{font:800 1.4rem var(--f-display);color:var(--teal);min-width:2ch}
+input[type=range]{flex:1;min-width:200px;accent-color:#2BB3C0;height:36px}
+.insight{margin-top:10px;font-size:15.5px;color:#DCE7F0;min-height:3.2em}
+.disc{font-size:12.5px;color:#8DA3B6;margin-top:8px}
+
+/* complementar (faixa escura fixa) */
+.darkband{background:#061522;color:#fff;overflow:hidden}
+.darkband h2{color:#fff}
+.darkband .kicker{color:#5ED0DB}
+.darkband .lead{color:#B3C4D3}
+.svc{display:grid;gap:18px;margin-top:48px}
+@media(min-width:960px){.svc{grid-template-columns:1fr 1fr}}
+.sc{border-radius:22px;padding:clamp(24px,3vw,34px);background:#0B2033;border:1px solid rgba(255,255,255,.1)}
+.sc h3{color:#fff;font-size:1.6rem}
+.sc .p{font:800 1.4rem var(--f-display);color:var(--teal);margin:10px 0 14px;letter-spacing:-.02em}
+.sc .p small{font:600 13.5px var(--f-body);color:#9FB3C4;letter-spacing:0}
+.sc p{color:#B3C4D3;font-size:15.5px}
+.sc .list li{color:#DCE7F0;font-size:15.5px}
+.sc.wide{grid-column:1/-1;background:linear-gradient(135deg,#0D2A40,#0B2033);border-color:rgba(94,208,219,.3)}
+.autom{display:grid;gap:28px}
+@media(min-width:960px){.autom{grid-template-columns:1fr 1fr;gap:44px}}
+.seg{display:inline-grid;grid-auto-flow:column;gap:4px;padding:5px;border-radius:14px;background:rgba(255,255,255,.08);margin:6px 0 18px}
+.seg button{min-height:44px;padding:0 22px;border:0;border-radius:10px;background:transparent;color:#B3C4D3;font:700 14.5px var(--f-body);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--teal);color:#04141F}
+.plan-price{font:800 3rem/1 var(--f-display);letter-spacing:-.04em;color:#fff}
+.plan-price small{font:600 15px var(--f-body);color:#9FB3C4;letter-spacing:0}
+.plan-desc{margin:12px 0 0;color:#DCE7F0}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:99px;border:1px solid rgba(94,208,219,.4);color:#5ED0DB;font:700 12.5px var(--f-body)}
+.zlink{display:inline-flex;margin-top:18px;color:#fff;font-weight:700;text-decoration-color:var(--teal);text-underline-offset:4px}
+
+/* investimento */
+.invest{display:grid;gap:22px;margin-top:44px;align-items:start}
+@media(min-width:960px){.invest{grid-template-columns:1.25fr 1fr}}
+.presets{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.presets button{min-height:44px;padding:0 18px;border-radius:99px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:700 14px var(--f-body);cursor:pointer;transition:all .2s}
+.presets button:hover{border-color:var(--teal)}
+.presets button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.opts{display:grid;gap:10px}
+.opt{position:relative;display:grid;grid-template-columns:28px 1fr auto;gap:14px;align-items:center;padding:16px 18px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--teal)}
+.opt input{appearance:none;-webkit-appearance:none;width:26px;height:26px;border-radius:8px;border:2px solid var(--line);background:var(--bg);display:grid;place-items:center;margin:0;cursor:pointer;transition:all .2s}
+.opt input:checked{background:var(--teal);border-color:var(--teal)}
+.opt input:checked::after{content:"";width:12px;height:7px;border-left:3px solid #04141F;border-bottom:3px solid #04141F;rotate:-45deg;translate:0 -1px}
+.opt:has(input:checked){border-color:var(--teal);background:var(--surface)}
+.opt input:disabled{opacity:.7;cursor:default}
+.opt strong{display:block;font-size:16.5px;line-height:1.25}
+.opt small{display:block;color:var(--muted);font-size:13.5px;line-height:1.35;margin-top:2px}
+.opt .amt{font:800 15px var(--f-display);color:var(--accent-ink);text-align:right;white-space:nowrap}
+.opt .amt small{font:600 12px var(--f-body);color:var(--muted)}
+.opt.locked{background:var(--surface2)}
+.zplan{display:none;gap:8px;margin:-2px 0 2px 42px}
+.zplan.show{display:flex;flex-wrap:wrap}
+.zplan label{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:99px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;font-weight:700;font-size:14px}
+.zplan label:has(input:checked){border-color:var(--teal);background:var(--surface2)}
+.zplan input{accent-color:#2BB3C0;width:16px;height:16px;margin:0}
+.sum{position:sticky;top:calc(84px + env(safe-area-inset-top,0px));border-radius:22px;background:var(--navy);color:#fff;padding:clamp(24px,3vw,34px)}
+.sum h3{color:#fff;font-size:1.2rem;margin-bottom:18px}
+.sum .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.sum .row span{color:#B3C4D3;font-size:14.5px}
+.sum .row b{font:800 1.9rem/1 var(--f-display);color:#fff;letter-spacing:-.03em}
+.sum .row b small{font:600 13px var(--f-body);color:#9FB3C4;letter-spacing:0}
+.sum .ref{font-size:13.5px;color:#9FB3C4;margin:14px 0 0}
+.sum ul{margin:14px 0 20px;padding:0;list-style:none;display:grid;gap:7px;font-size:13.5px;color:#B3C4D3}
+.sum ul li{padding-left:16px;position:relative}
+.sum ul li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--amber-line)}
+.sum .btn{width:100%}
+
+/* método */
+.pr{padding:28px}
+.pr .n{font:800 2.4rem/1 var(--f-display);color:var(--teal);margin-bottom:14px}
+.pr h3{font-size:1.3rem;margin-bottom:10px}
+.pr p{margin:0;color:var(--muted);font-size:15.5px}
+
+/* próximos passos */
+.next{display:grid;gap:0;margin-top:44px;border-top:1px solid var(--line)}
+.ns{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:start;padding:24px 0;border-bottom:1px solid var(--line)}
+.ns b{font:800 2.4rem/1 var(--f-display);color:var(--teal);letter-spacing:-.04em}
+.ns p{margin:0;font-size:17.5px;max-width:60ch}
+.sign{margin-top:44px;display:grid;gap:22px;padding:clamp(26px,4vw,44px);border-radius:24px;background:var(--navy);color:#fff}
+@media(min-width:800px){.sign{grid-template-columns:1fr auto;align-items:center}}
+.sign h3{color:#fff;font-size:1.9rem}
+.sign p{margin:6px 0 0;color:#B3C4D3}
+.sign .cta{display:flex;flex-wrap:wrap;gap:12px}
+footer{background:#061522;color:#8DA3B6;padding:48px 0 56px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between}
+footer .brand i{width:54px;height:54px}
+footer a{color:#B7C7D5}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .seal{animation:none}
+  .js .reveal,.js .step{transition:none;opacity:1;transform:none}
+  .panel{animation:none}
+}
+
+.service-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:34px}
+@media(min-width:820px){.service-grid{grid-template-columns:1fr 1fr}}
+.service-block{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 12px 30px rgba(6,21,34,.05)}
+.service-block.core{background:var(--navy);color:#dce6ee;border-color:transparent}
+.service-block.core h3{color:#fff}.service-block.core p,.service-block.core li{color:#c5d4df}
+.service-block h3{font-size:1.45rem;margin-bottom:10px}.service-block ul{padding-left:20px;margin:16px 0 0}.service-block li{margin:8px 0;color:var(--muted)}
+.mini-price{display:inline-flex;align-items:baseline;gap:8px;margin-top:18px;font-weight:700;color:var(--accent-ink)}
+.core .mini-price{color:#55d2dd}.mini-price b{font:800 1.65rem var(--f-display)}
+.scope-note{margin-top:24px;padding:18px 20px;border-left:4px solid var(--teal);background:var(--surface2);border-radius:0 12px 12px 0}
+.sumline{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.sumline:last-child{border-bottom:0}.sumline b{color:#fff}.sumline span:last-child{white-space:nowrap}
+.source-note{font-size:12px;color:var(--muted);margin-top:16px}
+</style></head>
+<body><div id="progress" aria-hidden="true"></div>
+<nav class="top"><div class="wrap"><a class="brand" href="#topo"><i></i><span>Sucesso Empresarial</span></a><div class="links"><a href="#diagnostico">Diagnóstico</a><a href="#proposta">A proposta</a><a href="#investimento">Investimento</a><a href="#comecar">Como começar</a></div><a class="btn primary sm" href="#investimento">Ver investimento</a></div></nav>
+<header class="hero" id="topo"><div class="seal" aria-hidden="true"></div><div class="wrap">
+<div class="kicker">Proposta Comercial · 1 de outubro de 2026</div>
+<h1>Quando o carro não liga, o cliente quer <em>resposta agora.</em></h1>
+<p class="sub">Uma proposta para transformar Google, site e WhatsApp da EDCAR em um fluxo mais claro de captação, confiança e atendimento.</p>
+<div class="cta"><a class="btn primary" href="#diagnostico">Ver diagnóstico</a><a class="btn ghost" href="#investimento">Ver valores</a></div>
+<div class="stats" role="list"><div class="stat"><b>4,9</b><span>nota atual no Google</span></div><div class="stat"><b><span data-count="69">69</span></b><span>avaliações no perfil local</span></div><div class="stat"><b>8</b><span>conteúdos em texto por mês</span></div></div>
+<div class="meta"><span>Para: <b>Edcarlos de Souza</b> · EDCAR Auto Elétrica e Disk Bateria</span><span>Preparada por: <b>Mauricio Ruiz</b> · Sucesso Empresarial</span></div>
+</div></header>
+
+<section id="diagnostico"><div class="wrap"><div class="kicker reveal">Diagnóstico</div><h2 class="reveal wide">A empresa já tem reputação. Os canais precisam falar a mesma língua.</h2>
+<p class="lead reveal">A EDCAR já tem uma oferta forte: atendimento rápido, bateria no local e capacidade de diagnosticar quando o problema não é a bateria. O ganho agora está em organizar essa força entre Google, site e WhatsApp.</p>
+<div class="diag"><div class="reveal"><div class="gcard" id="gcard" data-state="before"><div class="gtoggle"><button type="button" data-set="before" aria-pressed="true">Hoje</button><button type="button" data-set="after" aria-pressed="false">Depois</button></div><div class="gbody"><div class="ghead"><div class="gav">E</div><div><strong>EDCAR Auto Elétrica e Disk Bateria</strong><small>Presença digital local · Vila Velha</small></div></div><dl style="margin:0">
+<div class="grow"><dt>Avaliações exibidas no site</dt><dd><span data-b>26 avaliações</span><span data-a>Informação atualizada e coerente</span></dd></div>
+<div class="grow"><dt>Horário</dt><dd><span data-b class="bad tag">Site e Google divergentes</span><span data-a class="good tag">Um horário confirmado em todos os canais</span></dd></div>
+<div class="grow"><dt>Conteúdo</dt><dd><span data-b>Sem rotina mensal definida</span><span data-a>4 artigos + 4 posts no Google por mês</span></dd></div>
+<div class="grow"><dt>WhatsApp</dt><dd><span data-b>Atendimento concentrado no manual</span><span data-a>Automação inicial com ZapSim One</span></dd></div>
+</dl></div></div><p class="gnote">Comparação do estado atual com o escopo desta proposta.</p></div>
+<div class="points">
+<div class="point reveal"><span class="n">1</span><div><h3>O site ficou para trás da reputação atual</h3><p>O site ainda exibe 26 avaliações do Google, enquanto o perfil local aparece hoje com <b>69 avaliações e nota 4,9</b>. A prova social mais forte da EDCAR não está sendo aproveitada integralmente.</p></div></div>
+<div class="point reveal" style="--d:.08s"><span class="n">2</span><div><h3>Há divergência de horário</h3><p>O site informa segunda a sábado das 6h às 21h e domingo das 7h às 12h. O cadastro local aparece com operação 24h em vários dias. O horário correto será confirmado com a empresa e padronizado.</p></div></div>
+<div class="point reveal" style="--d:.16s"><span class="n">3</span><div><h3>O diferencial comercial está certo, mas precisa ganhar destaque</h3><p>A EDCAR não é apenas entrega de bateria: diagnostica alternador, partida, chicotes, fusíveis e outras falhas. Isso diferencia a empresa de quem chega apenas para trocar a peça.</p></div></div>
+<div class="point good-news reveal" style="--d:.24s"><span class="n">4</span><div><h3>A base já existe</h3><p>Domínio, site, perfil local, avaliações e WhatsApp já estão ativos. O projeto não começa do zero: ele organiza, atualiza e cria continuidade.</p></div></div>
+</div></div></div></section>
+
+<section id="proposta" style="background:var(--surface2)"><div class="wrap"><div class="kicker reveal">A proposta</div><h2 class="reveal wide">Duas etapas independentes, na ordem certa para a EDCAR.</h2><p class="lead reveal">A primeira etapa entra agora: organizar o atendimento no WhatsApp com o ZapSim. A segunda fica preparada para uma próxima decisão: reformular site e Google Meu Negócio e iniciar a rotina de conteúdo.</p>
+<div class="service-grid">
+<div class="service-block core reveal" style="--d:.04s"><div class="badge">Contratação de hoje</div><h3>Etapa 1 · ZapSim + Setup</h3><p>Implantação da automação inicial do WhatsApp usando o plano One.</p><ul><li>Conexão e configuração inicial de 1 canal WhatsApp.</li><li>Respostas automáticas e chatbot básico, de acordo com o processo da EDCAR.</li><li>Agendamento de mensagens e testes do fluxo inicial.</li><li>1 usuário no plano One.</li></ul><div class="mini-price"><b>R$ 500</b><span>setup único</span></div><div class="mini-price" style="margin-left:18px"><b>R$ 89</b><span>/mês</span></div></div>
+<div class="service-block reveal" style="--d:.10s"><div class="badge" style="background:var(--surface2);color:var(--accent-ink)">Próxima etapa</div><h3>Etapa 2 · Site + Google Meu Negócio</h3><p>Reformulação da presença digital, contratada separadamente quando a EDCAR decidir avançar.</p><ul><li><b>Reformulação do site atual</b> no domínio socorroeletrico24horas.com.br, com foco em celular, clareza dos serviços, chamadas para WhatsApp e estrutura de blog.</li><li><b>Reformulação do Google Meu Negócio</b>: revisão de informações, categorias, descrição, horário, contatos, serviços e ligação com o site.</li><li><b>Conteúdo mensal:</b> 4 artigos para o site/blog + 4 publicações em texto no Google Meu Negócio, sem criação de imagens.</li></ul><div class="mini-price"><b>R$ 950</b><span>implantação futura</span></div><div class="mini-price" style="margin-left:18px"><b>R$ 310</b><span>/mês após ativação</span></div></div>
+</div><div class="scope-note reveal"><b>Instagram:</b> a análise do perfil ajuda a manter coerência da marca, mas gestão, criação de posts e produção de imagens para Instagram não fazem parte deste orçamento.</div></div></section>
+
+<section><div class="wrap"><div class="kicker reveal">Etapa 2 · Recorrência</div><h2 class="reveal wide">Quando a presença digital for ativada, o mensal será de R$ 310.</h2><p class="lead reveal">Essa recorrência pertence somente à segunda etapa e começa após a contratação da frente Site + Google Meu Negócio.</p>
+<div class="grid g2" style="margin-top:34px"><div class="mc reveal"><h3>4 artigos no site/blog</h3><p>Conteúdo em texto sobre dúvidas reais de quem precisa de bateria, socorro elétrico e autoelétrica, fortalecendo a estrutura do site e sua presença nas buscas.</p><span class="price">4 por mês · sem imagens</span></div><div class="mc reveal" style="--d:.08s"><h3>4 posts no Google Meu Negócio</h3><p>Publicações em texto para manter o perfil atualizado, reforçar serviços e criar recorrência de comunicação local.</p><span class="price">4 por mês · sem imagens</span></div></div>
+<div class="note neutral reveal"><div><b>Exemplos de pauta:</b> carro não liga: bateria ou alternador; sinais de problema no motor de partida; quando trocar a bateria; o que fazer numa pane elétrica em Vila Velha.</div></div></div></section>
+
+<section id="investimento" class="darkband"><div class="wrap"><div class="kicker reveal">Investimento</div><h2 class="reveal wide">Duas etapas. Hoje, somente o ZapSim.</h2><p class="lead reveal">A contratação atual fica isolada da futura reformulação de site e Google. Cada etapa tem implantação e mensalidade próprias.</p>
+<div class="invest"><div class="reveal"><div class="opts" id="opts">
+<div style="font:800 1.05rem var(--f-display);color:var(--teal);margin:0 0 12px">ETAPA 1 · CONTRATAÇÃO ATUAL</div>
+<label class="opt locked"><input type="checkbox" checked disabled><span><strong>Setup ZapSim</strong><small>implantação e configuração inicial</small></span><span class="amt">R$ 500<br><small>único</small></span></label>
+<label class="opt locked"><input type="checkbox" checked disabled><span><strong>ZapSim One</strong><small>1 usuário + 1 canal WhatsApp</small></span><span class="amt">R$ 89<br><small>por mês</small></span></label>
+<div style="font:800 1.05rem var(--f-display);color:#9FB3C4;margin:28px 0 12px">ETAPA 2 · CONTRATAÇÃO FUTURA</div>
+<label class="opt"><input type="checkbox" disabled><span><strong>Reformulação do site</strong><small>site atual + estrutura de blog</small></span><span class="amt">R$ 600<br><small>único</small></span></label>
+<label class="opt"><input type="checkbox" disabled><span><strong>Google Meu Negócio</strong><small>reformulação e otimização inicial</small></span><span class="amt">R$ 350<br><small>único</small></span></label>
+<label class="opt"><input type="checkbox" disabled><span><strong>Conteúdo mensal</strong><small>4 artigos no site + 4 posts no Google, sem imagens</small></span><span class="amt">R$ 310<br><small>por mês, após ativação</small></span></label>
+</div></div><aside class="sum reveal"><div class="sumtitle">Contratação de hoje</div><div class="sumline"><span>Setup ZapSim</span><b>R$ 500</b></div><div class="sumline"><span>ZapSim One</span><b>R$ 89/mês</b></div><p style="margin-top:18px;color:#b9cbd8">A Etapa 2 não está incluída nesta contratação. Quando aprovada, será R$ 950 de implantação + R$ 310/mês.</p><a class="btn primary" id="wa" target="_blank" rel="noopener" href="https://wa.me/5527920000167?text=Ol%C3%A1%2C%20Mauricio%21%20Quero%20aprovar%20a%20Etapa%201%20da%20proposta%20da%20EDCAR%3A%20setup%20do%20ZapSim%20por%20R%24%20500%20%2B%20plano%20One%20de%20R%24%2089%2Fm%C3%AAs.">Aprovar Etapa 1</a></aside></div>
+<div class="source-note">Valores apresentados conforme negociação. O plano ZapSim One foi conferido em zapsim.com em 01/10/2026.</div></div></section>
+
+<section id="comecar"><div class="wrap"><div class="kicker reveal">Próximos passos</div><h2 class="reveal wide">Como começamos.</h2><div style="margin-top:34px">
+<div class="ns reveal"><b>1</b><p>Aprovação da <b>Etapa 1</b>: setup do ZapSim por <b>R$ 500</b> + assinatura do plano One por <b>R$ 89/mês</b>.</p></div>
+<div class="ns reveal"><b>2</b><p>Organização do acesso ao WhatsApp e das informações necessárias para configurar os primeiros fluxos.</p></div>
+<div class="ns reveal"><b>3</b><p>Configuração, testes e ativação inicial do ZapSim.</p></div>
+<div class="ns reveal"><b>4</b><p>A <b>Etapa 2</b> - site + Google Meu Negócio - permanece separada e só começa após nova aprovação.</p></div></div>
+<div class="sign reveal"><div><h3>Mauricio Ruiz</h3><p>Sucesso Empresarial · IA, Automação e Gestão</p><p>WhatsApp (27) 92000-0167 · sucesso.com.br</p></div></div></div></section>
+<footer><div class="wrap">Sucesso Empresarial Ltda · CNPJ 01.655.728/0001-14 · sucesso.com.br</div></footer>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+ var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+ var p=document.getElementById('progress');function prog(){var h=document.documentElement.scrollHeight-innerHeight;p.style.width=(h>0?scrollY/h*100:0)+'%'}addEventListener('scroll',prog,{passive:true});prog();
+ var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1}):{observe:function(e){e.classList.add('in')}};document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+ document.querySelectorAll('[data-count]').forEach(function(el){var target=parseInt(el.dataset.count,10);if(reduce){el.textContent=target;return}var start=performance.now();function f(t){var q=Math.min(1,(t-start)/900);el.textContent=Math.round(target*(1-Math.pow(1-q,3)));if(q<1)requestAnimationFrame(f)}requestAnimationFrame(f)});
+ var g=document.getElementById('gcard');if(g)g.querySelectorAll('[data-set]').forEach(function(b){b.addEventListener('click',function(){g.dataset.state=b.dataset.set;g.querySelectorAll('[data-set]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')})})});
+})();
+</script></body></html>
